@@ -17,7 +17,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "chef_solo" do |chef|
     chef.data_bags_path = "data_bags"
     chef.add_recipe "chef-solo-search::default"
+    chef.add_recipe "git::default"
     chef.add_recipe "capistrano-wordpress::all-in-one-role"
+    chef.add_recipe "ssh-import-id::default"
 
     chef.json = {
       capistrano_wordpress: {
@@ -25,7 +27,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         db: {
           name: 'bedrock_test',
           environments: ['production']
+        },
+        wp: {
+          home: 'http://192.168.33.10',
+          siteurl: 'http://192.168.33.10/wp'
         }
+      },
+      ssh_import_id: {
+        users: [
+          {
+            name: 'deploy',
+            github_accounts: %w{adamkrone}
+          }
+        ]
       }
     }
   end
