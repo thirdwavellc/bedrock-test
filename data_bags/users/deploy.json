@@ -1,0 +1,7 @@
+{
+    "id": "deploy",
+    "uid": 3000,
+    "password": "$1$NBrSqe/p$wCWk0mqfsG2Y2KWdXgsOY1",
+    "groups": ["deploy", "www-data"],
+    "shell": "/bin/bash"
+}
