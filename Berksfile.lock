@@ -1,6 +1,7 @@
 DEPENDENCIES
   capistrano-wordpress
-    path: ../chef-capistrano-wordpress
+    git: git://github.com/adamkrone/chef-capistrano-wordpress.git
+    revision: cc253504dbc563f1354af901cf253897994a8f90
   chef-solo-search
     git: git://github.com/edelight/chef-solo-search.git
     revision: 848fad1461c78fd502975f1df2e14eed12610635
