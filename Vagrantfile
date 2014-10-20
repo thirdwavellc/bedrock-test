@@ -22,12 +22,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "ssh-import-id::default"
 
     chef.json = {
-      capistrano_wordpress: {
+      capistrano_base: {
         app_name: 'bedrock_test',
         db: {
           name: 'bedrock_test',
           environments: ['production']
-        },
+        }
+      },
+      capistrano_wordpress: {
         wp: {
           home: 'http://192.168.33.10',
           siteurl: 'http://192.168.33.10/wp'

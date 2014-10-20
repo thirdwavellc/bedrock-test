@@ -1,7 +1,10 @@
 DEPENDENCIES
+  capistrano-base
+    git: git://github.com/adamkrone/chef-capistrano-base.git
+    revision: 58a8ef8f1a900f74d6d11ff42a11c03ad79004e1
   capistrano-wordpress
     git: git://github.com/adamkrone/chef-capistrano-wordpress.git
-    revision: cc253504dbc563f1354af901cf253897994a8f90
+    revision: eb72872dc7d87b524bc7811212dbdf1782beecc8
   chef-solo-search
     git: git://github.com/edelight/chef-solo-search.git
     revision: 848fad1461c78fd502975f1df2e14eed12610635
@@ -23,9 +26,19 @@ GRAPH
     windows (>= 0.0.0)
   aws (2.4.0)
   build-essential (2.1.2)
-  capistrano-wordpress (0.1.0)
+  capistrano-base (0.1.0)
     apache2 (>= 0.0.0)
     apt (>= 0.0.0)
+    database (>= 0.0.0)
+    mysql (>= 0.0.0)
+    nodejs (>= 0.0.0)
+    ssh-hardening (>= 0.0.0)
+    sudo (>= 0.0.0)
+    users (>= 0.0.0)
+  capistrano-wordpress (0.2.0)
+    apache2 (>= 0.0.0)
+    apt (>= 0.0.0)
+    capistrano-base (>= 0.0.0)
     composer (>= 0.0.0)
     database (>= 0.0.0)
     mysql (>= 0.0.0)
