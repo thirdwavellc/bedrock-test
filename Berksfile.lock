@@ -1,10 +1,14 @@
 DEPENDENCIES
+  bedrock1
+    path: cookbooks/chef-bedrock1
+  bedrock2
+    path: cookbooks/chef-bedrock2
   capistrano-base
     git: git://github.com/adamkrone/chef-capistrano-base.git
-    revision: 58a8ef8f1a900f74d6d11ff42a11c03ad79004e1
+    revision: 1b37d30645795e568a1439f5d92c81344b29b280
   capistrano-wordpress
     git: git://github.com/adamkrone/chef-capistrano-wordpress.git
-    revision: eb72872dc7d87b524bc7811212dbdf1782beecc8
+    revision: c599573363f08c7fbd296d542baf4b37cb7ce572
   chef-solo-search
     git: git://github.com/edelight/chef-solo-search.git
     revision: 848fad1461c78fd502975f1df2e14eed12610635
@@ -24,9 +28,13 @@ GRAPH
   ark (0.9.0)
     7-zip (>= 0.0.0)
     windows (>= 0.0.0)
-  aws (2.4.0)
+  aws (2.5.0)
+  bedrock1 (0.1.0)
+    capistrano-wordpress (>= 0.0.0)
+  bedrock2 (0.1.0)
+    capistrano-wordpress (>= 0.0.0)
   build-essential (2.1.2)
-  capistrano-base (0.1.0)
+  capistrano-base (0.2.0)
     apache2 (>= 0.0.0)
     apt (>= 0.0.0)
     database (>= 0.0.0)
