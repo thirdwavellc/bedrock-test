@@ -30,6 +30,15 @@ CHEF_JSON_PROD = CHEF_JSON.merge!({
 })
 
 CHEF_JSON_MULTI_TENANT = CHEF_JSON.merge!({
+  consul: {
+    service_mode: 'client',
+    service_user: 'root',
+    service_group: 'root',
+    servers: ['172.20.20.10', '172.20.20.11', '172.20.20.12'],
+    bind_interface: 'eth1',
+    bind_addr: '192.168.33.10',
+    datacenter: 'vagrant'
+  },
   ssh_import_id: {
     users: [{name: 'deploy', github_accounts: %w{adamkrone}}]
   }
@@ -60,8 +69,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.define 'multi-tenant' do |dev|
-    dev.vm.hostname = "bedrock1.dev"
-    dev.hostsupdater.aliases = ["bedrock2.dev"]
+    dev.vm.hostname = "bedrock-multi-tenant.dev"
+    dev.hostsupdater.aliases = ["bedrock1.dev", "bedrock2.dev"]
     dev.vm.network "private_network", ip: "192.168.33.10"
 
     dev.vm.provision "chef_solo" do |chef|
@@ -72,6 +81,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.add_recipe "bedrock1::production"
       chef.add_recipe "bedrock2::production"
       chef.add_recipe "ssh-import-id::default"
+      chef.add_recipe "consul::default"
 
       chef.json = CHEF_JSON_MULTI_TENANT
     end
