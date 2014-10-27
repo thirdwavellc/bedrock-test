@@ -8,7 +8,7 @@ DEPENDENCIES
     revision: 1b37d30645795e568a1439f5d92c81344b29b280
   capistrano-wordpress
     git: git://github.com/adamkrone/chef-capistrano-wordpress.git
-    revision: c599573363f08c7fbd296d542baf4b37cb7ce572
+    revision: fb429dc7a9f796087afa1b4d4f788daea8dafdf1
   chef-solo-search
     git: git://github.com/edelight/chef-solo-search.git
     revision: 848fad1461c78fd502975f1df2e14eed12610635
@@ -43,7 +43,7 @@ GRAPH
     ssh-hardening (>= 0.0.0)
     sudo (>= 0.0.0)
     users (>= 0.0.0)
-  capistrano-wordpress (0.2.0)
+  capistrano-wordpress (0.3.0)
     apache2 (>= 0.0.0)
     apt (>= 0.0.0)
     capistrano-base (>= 0.0.0)
@@ -51,7 +51,7 @@ GRAPH
     database (>= 0.0.0)
     mysql (>= 0.0.0)
     nodejs (>= 0.0.0)
-    php (>= 0.0.0)
+    php-fpm (>= 0.0.0)
     ssh-hardening (>= 0.0.0)
     sudo (>= 0.0.0)
     users (>= 0.0.0)
@@ -99,6 +99,9 @@ GRAPH
     windows (>= 0.0.0)
     xml (>= 0.0.0)
     yum-epel (>= 0.0.0)
+  php-fpm (0.7.0)
+    apt (>= 0.0.0)
+    yum (>= 3.0)
   postgresql (3.4.10)
     apt (>= 1.9.0)
     build-essential (>= 0.0.0)
