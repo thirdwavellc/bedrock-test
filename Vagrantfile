@@ -43,8 +43,8 @@ CHEF_JSON_MULTI_TENANT = CHEF_JSON.merge!({
     consul: '127.0.0.1:8500',
     templates: [
       {
-	source: '/var/www/bedrock1/shared/.env.ctmpl',
-	destination: '/var/www/bedrock1/shared/.env'
+        source: '/var/www/bedrock1/shared/.env.ctmpl',
+        destination: '/var/www/bedrock1/shared/.env'
       }
     ]
   },
