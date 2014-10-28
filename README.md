@@ -9,9 +9,9 @@ Before you start any virtual machines, enter your Github account name in the
 ssh-import-id section of the CHEF_JSON variable corresponding to the machine
 you want to use, located in the Vagrantfile:
 
-  ssh_import_id: {
-    users: [{name: 'deploy', github_accounts: %w{your-name-here}}]
-  }
+	ssh_import_id: {
+		users: [{name: 'deploy', github_accounts: %w{your-name-here}}]
+	}
 
 This will automatically import your public keys stored on Github to the machine
 you are provisioning. Make sure your local computer's public key is registered
@@ -24,7 +24,7 @@ There are currently two types of machines configured:
 
 This is a simple all-in-one machine. To start it:
 
-  vagrant up production
+	vagrant up production
 
 ### Multi-tenant Machine
 
@@ -35,14 +35,14 @@ In this instance, we're deploying the same code as two different apps, but we
 can create posts, upload media, etc. independently so we can test to make sure
 they don't interfere with one another. To start the machine:
 
-  vagrant up multi-tenant
+	vagrant up multi-tenant
 
 ## Deploy
 
 Bedrock uses Capistrano to deploy, so make sure you have ruby installed and
 install the gems.
 
-  bundle install
+	bundle install
 
 Currently there are 3 stages setup:
 
@@ -53,7 +53,7 @@ Currently there are 3 stages setup:
 The production stage will deploy to the Production machine, while bedrock1 and bedrock2
 will deploy to the Multi-tenant machine. To deploy bedrock1, for example:
 
-  bundle exec cap bedrock1 deploy
+	bundle exec cap bedrock1 deploy
 
 When this completes, bedrock1 should be accessible at [bedrock1.dev](http://bedrock1.dev)
 
@@ -78,6 +78,6 @@ through the web ui, or using [Terraform](https://terraform.io/).
 
 From the terraform directory, run:
 
-  terraform apply
+	terraform apply
 
 to automatically add the keys to your consul cluster.
