@@ -10,7 +10,7 @@ sql-dump-*.sql
 .env
 .env.*
 !.env.example
-!.env.erb
+!.env.ctmpl.erb
 
 # Application
 web/app/plugins/*

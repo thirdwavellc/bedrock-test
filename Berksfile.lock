@@ -14,7 +14,14 @@ DEPENDENCIES
     revision: 848fad1461c78fd502975f1df2e14eed12610635
   consul
     git: git://github.com/johnbellone/consul-cookbook.git
-    revision: 553d25f945eb1707db6b863766226d71e0a3c6d8
+    revision: d75fe45f809042d9e4808ff6e9ba84504db3f42e
+    ref: d75fe45
+  consul-services
+    git: git://github.com/adamkrone/chef-consul-services.git
+    revision: 2b76fdb7d7099bc1372e8aabb17c245c68a57d06
+  consul-template
+    git: git://github.com/adamkrone/chef-consul-template.git
+    revision: 152f9cfdafa04b28edd92b25510ecb2676cdd121
   git
   ssh-import-id
     git: git://github.com/adamkrone/chef-ssh-import-id.git
@@ -64,11 +71,19 @@ GRAPH
   composer (1.0.6)
     php (>= 0.0.0)
     windows (>= 0.0.0)
-  consul (0.5.0)
+  consul (0.4.4)
     ark (>= 0.0.0)
     golang (~> 1.3.0)
     runit (>= 0.0.0)
     yum-repoforge (>= 0.0.0)
+  consul-services (0.1.0)
+    consul (>= 0.0.0)
+    curl (>= 0.0.0)
+  consul-template (0.1.0)
+    ark (>= 0.0.0)
+    golang (~> 1.3.0)
+    runit (>= 0.0.0)
+  curl (2.0.0)
   database (2.3.0)
     aws (>= 0.0.0)
     mysql (>= 5.0.0)
@@ -93,7 +108,7 @@ GRAPH
   mysql-chef_gem (0.0.5)
     build-essential (>= 0.0.0)
     mysql (>= 0.0.0)
-  nodejs (2.1.0)
+  nodejs (2.2.0)
     apt (>= 0.0.0)
     ark (>= 0.0.0)
     build-essential (>= 0.0.0)

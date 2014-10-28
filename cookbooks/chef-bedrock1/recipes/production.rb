@@ -36,10 +36,9 @@ template_variables = {
   }
 }
 
-capistrano_shared_file '.env' do
+capistrano_shared_file '.env.ctmpl' do
   path '/var/www/bedrock1/shared'
-  template '.env.erb'
-  variables template_variables
+  template '.env.ctmpl.erb'
   owner 'deploy'
   group 'deploy'
 end
