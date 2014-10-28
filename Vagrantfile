@@ -58,10 +58,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.omnibus.chef_version = :latest
 
-  if Vagrant.has_plugin?("vagrant-cachier")
-    config.cache.scope = :box
-  end
-
   config.vm.define :production do |prod|
     prod.vm.hostname = "bedrock-test.prod"
     prod.vm.network "private_network", ip: "192.168.33.11"
