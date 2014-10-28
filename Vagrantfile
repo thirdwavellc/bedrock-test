@@ -39,6 +39,15 @@ CHEF_JSON_MULTI_TENANT = CHEF_JSON.merge!({
     bind_addr: '192.168.33.10',
     datacenter: 'vagrant'
   },
+  consul_template: {
+    consul: '127.0.0.1:8500',
+    templates: [
+      {
+        source: '/var/www/bedrock1/shared/.env.ctmpl',
+        destination: '/var/www/bedrock1/shared/.env'
+      }
+    ]
+  },
   ssh_import_id: {
     users: [{name: 'deploy', github_accounts: %w{adamkrone}}]
   }
@@ -82,6 +91,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.add_recipe "bedrock2::production"
       chef.add_recipe "ssh-import-id::default"
       chef.add_recipe "consul::default"
+      chef.add_recipe "consul-services::apache2"
+      chef.add_recipe "consul-services::mysql"
+      chef.add_recipe "consul-template::default"
 
       chef.json = CHEF_JSON_MULTI_TENANT
     end
