@@ -73,12 +73,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.define 'multi-tenant' do |dev|
-    dev.vm.hostname = "bedrock-multi-tenant.dev"
-    dev.hostsupdater.aliases = ["bedrock1.dev", "bedrock2.dev"]
-    dev.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.define 'multi-tenant' do |multi|
+    multi.vm.hostname = "bedrock-multi-tenant.dev"
+    multi.hostsupdater.aliases = ["bedrock1.dev", "bedrock2.dev"]
+    multi.vm.network "private_network", ip: "192.168.33.10"
 
-    dev.vm.provision "chef_solo" do |chef|
+    multi.vm.provision "chef_solo" do |chef|
       chef.data_bags_path = "data_bags"
       chef.add_recipe "apt::default"
       chef.add_recipe "git::default"
@@ -92,6 +92,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.add_recipe "consul-template::default"
 
       chef.json = CHEF_JSON_MULTI_TENANT
+    end
+  end
+
+  config.vm.define 'db' do |db|
+    db.vm.hostname = 'db.bedrock.dev'
+    db.vm.network "private_network", ip: "192.168.33.20"
+
+    db.vm.provision "chef_solo" do |chef|
+      chef.add_recipe "apt::default"
+      chef.add_recipe "bedrock1::db"
     end
   end
 end
