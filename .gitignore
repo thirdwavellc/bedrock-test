@@ -33,3 +33,6 @@ node_modules
 # Vagrant
 bin
 .vagrant
+
+# Terraform (We don't care about saving state)
+*.tfstate*
