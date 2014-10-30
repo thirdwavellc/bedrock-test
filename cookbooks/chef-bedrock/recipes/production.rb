@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: bedrock2
+# Cookbook Name:: bedrock
 # Recipe:: production
 #
 # Copyright (C) 2014
@@ -15,40 +15,31 @@ include_recipe 'capistrano-wordpress::php'
 include_recipe 'capistrano-wordpress::composer'
 include_recipe 'capistrano-wordpress::apache2'
 
-capistrano_app 'bedrock2' do
+capistrano_app 'bedrock' do
   template 'web_app.conf.erb'
-  deploy_root '/var/www/bedrock2'
-  docroot '/var/www/bedrock2/current/web'
+  deploy_root '/var/www/bedrock'
+  docroot '/var/www/bedrock/current/web'
   deployment_user 'deploy'
   deployment_group 'deploy'
-  server_name 'bedrock2.dev'
+  server_name 'bedrock.dev'
 end
 
 template_variables = {
   environment_variables: {
-    DB_NAME: 'bedrock2_production',
-    DB_USER: 'bedrock2',
-    DB_PASSWORD: 'bedrock2',
-    DB_HOST: 'localhost',
+    DB_NAME: 'bedrock_production',
+    DB_USER: 'bedrock',
+    DB_PASSWORD: 'bedrock',
+    DB_HOST: '192.168.33.20',
     WP_ENV: 'production',
-    WP_HOME: 'http://bedrock2.dev',
-    WP_SITEURL: 'http://bedrock2.dev/wp'
+    WP_HOME: 'http://bedrock.dev',
+    WP_SITEURL: 'http://bedrock.dev/wp'
   }
 }
 
 capistrano_shared_file '.env' do
-  path '/var/www/bedrock2/shared'
+  path '/var/www/bedrock/shared'
   template '.env.erb'
   variables template_variables
   owner 'deploy'
   group 'deploy'
-end
-
-include_recipe 'capistrano-base::mysql-server'
-
-capistrano_mysql 'bedrock2' do
-  mysql_root_password node['mysql']['server_root_password']
-  db_user 'bedrock2'
-  db_password 'bedrock2'
-  db_environments ['production']
 end

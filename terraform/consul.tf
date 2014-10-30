@@ -37,12 +37,12 @@ resource "consul_keys" "bedrock1" {
   key {
     name = "wp_home"
     path = "bedrock1/wp_home"
-    value = "http://bedrock1.dev"
+    value = "http://bedrock.dev"
   }
 
   key {
     name = "wp_siteurl"
     path = "bedrock1/wp_siteurl"
-    value = "http://bedrock1.dev/wp"
+    value = "http://bedrock.dev/wp"
   }
 }
