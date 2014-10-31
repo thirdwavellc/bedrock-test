@@ -9,6 +9,13 @@
 
 package 'lsyncd'
 
+directory '/var/www/bedrock/shared/web/app/uploads' do
+  owner 'deploy'
+  group 'deploy'
+  recursive true
+  action :create
+end
+
 template '/etc/lsyncd.conf' do
   source 'lsyncd.conf.erb'
   action :create
