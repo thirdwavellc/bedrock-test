@@ -24,22 +24,9 @@ capistrano_app 'bedrock' do
   server_name 'bedrock.dev'
 end
 
-template_variables = {
-  environment_variables: {
-    DB_NAME: 'bedrock_production',
-    DB_USER: 'bedrock',
-    DB_PASSWORD: 'bedrock',
-    DB_HOST: '192.168.33.20',
-    WP_ENV: 'production',
-    WP_HOME: 'http://bedrock.dev',
-    WP_SITEURL: 'http://bedrock.dev/wp'
-  }
-}
-
-capistrano_shared_file '.env' do
+capistrano_shared_file '.env.ctmpl' do
   path '/var/www/bedrock/shared'
-  template '.env.erb'
-  variables template_variables
+  template '.env.ctmpl.erb'
   owner 'deploy'
   group 'deploy'
 end

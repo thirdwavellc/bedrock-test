@@ -3,46 +3,46 @@ provider "consul" {
   datacenter = "vagrant"
 }
 
-resource "consul_keys" "bedrock1" {
+resource "consul_keys" "bedrock" {
   key {
     name = "db_name"
-    path = "bedrock1/db_name"
-    value = "bedrock1_production"
+    path = "bedrock/db_name"
+    value = "bedrock_production"
   }
 
   key {
     name = "db_user"
-    path = "bedrock1/db_user"
-    value = "bedrock1"
+    path = "bedrock/db_user"
+    value = "bedrock"
   }
 
   key {
     name = "db_password"
-    path = "bedrock1/db_password"
-    value = "bedrock1"
+    path = "bedrock/db_password"
+    value = "bedrock"
   }
 
   key {
     name = "db_host"
-    path = "bedrock1/db_host"
-    value = "localhost"
+    path = "bedrock/db_host"
+    value = "192.168.33.20"
   }
 
   key {
     name = "wp_env"
-    path = "bedrock1/wp_env"
+    path = "bedrock/wp_env"
     value = "production"
   }
 
   key {
     name = "wp_home"
-    path = "bedrock1/wp_home"
+    path = "bedrock/wp_home"
     value = "http://bedrock.dev"
   }
 
   key {
     name = "wp_siteurl"
-    path = "bedrock1/wp_siteurl"
+    path = "bedrock/wp_siteurl"
     value = "http://bedrock.dev/wp"
   }
 }

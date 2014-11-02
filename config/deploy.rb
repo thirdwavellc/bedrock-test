@@ -13,12 +13,21 @@ set :log_level, :info
 set :linked_files, %w{.env}
 set :linked_dirs, %w{web/app/uploads}
 
+before 'deploy:finished', 'deploy:restart_lsyncd'
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       # execute :service, :nginx, :reload
+    end
+  end
+
+  desc 'Restart lsyncd'
+  task :restart_lsyncd do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute :service, :lsyncd, :restart
     end
   end
 end
