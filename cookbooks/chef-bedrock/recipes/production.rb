@@ -7,6 +7,8 @@
 #
 #
 
+node.override['apache2']['mpm'] = 'prefork'
+
 include_recipe 'apt::default'
 include_recipe 'capistrano-base::user'
 include_recipe 'capistrano-base::ssh'
