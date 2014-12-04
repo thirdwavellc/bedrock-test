@@ -23,16 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       node.vm.provision "chef_solo" do |chef|
         chef.data_bags_path = "data_bags"
         chef.add_recipe "chef-solo-search::default"
-        chef.add_recipe "git::default"
         chef.add_recipe "bedrock::production"
-        chef.add_recipe "bedrock::csync2"
-        chef.add_recipe "bedrock::lsyncd"
-        chef.add_recipe "ssh-import-id::default"
-        chef.add_recipe "consul::default"
-        chef.add_recipe "consul-services::apache2"
-        chef.add_recipe "consul-services::consul-template"
-        chef.add_recipe "consul-services::lsyncd"
-        chef.add_recipe "consul-template::default"
 
         chef.json = {
           consul: {
@@ -43,15 +34,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             bind_interface: 'eth1',
             bind_addr: ip_address,
             datacenter: 'vagrant'
-          },
-          consul_template: {
-            consul: '127.0.0.1:8500',
-            templates: [
-              {
-                source: '/var/www/bedrock/shared/.env.ctmpl',
-                destination: '/var/www/bedrock/shared/.env'
-              }
-            ]
           },
           ssh_import_id: {
             users: [
@@ -71,10 +53,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     db.vm.network "private_network", ip: "192.168.33.20"
 
     db.vm.provision "chef_solo" do |chef|
-      chef.add_recipe "apt::default"
       chef.add_recipe "bedrock::db"
-      chef.add_recipe "consul::default"
-      chef.add_recipe "consul-services::mysql"
 
       chef.json = {
         consul: {
@@ -95,10 +74,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     haproxy.vm.network "private_network", ip: "192.168.33.10"
 
     haproxy.vm.provision "chef_solo" do |chef|
-      chef.add_recipe "apt::default"
       chef.add_recipe "bedrock::haproxy"
-      chef.add_recipe "consul::default"
-      chef.add_recipe "consul-services::haproxy"
 
       chef.json = {
         consul: {

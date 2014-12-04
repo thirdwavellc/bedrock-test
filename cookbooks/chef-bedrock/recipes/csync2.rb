@@ -7,45 +7,18 @@
 #
 #
 
-package 'csync2'
+include_recipe 'csync2::default'
 
-hosts = ['bedrock01', 'bedrock02', 'bedrock03']
-
-template '/etc/csync2.cfg' do
-  source 'csync2.cfg.erb'
-  variables(
-    hosts: hosts
-  )
-  action :create
+# TODO: Move into data bag
+cookbook_file 'csync2.key' do
+  path '/etc/csync2.key'
+  action :create_if_missing
 end
 
-hosts.each do |host|
-  template "/etc/csync2_#{host}.cfg" do
-    source 'csync2_node.cfg.erb'
-    variables(
-      group: host,
-      hosts: hosts
-    )
-    action :create
-  end
-end
-
-template '/etc/csync2.key' do
-  source 'csync2.key.erb'
-  action :create
-end
-
-hostsfile_entry '192.168.33.11' do
-  hostname  'bedrock01'
-  action    :create_if_missing
-end
-
-hostsfile_entry '192.168.33.12' do
-  hostname  'bedrock02'
-  action    :create_if_missing
-end
-
-hostsfile_entry '192.168.33.13' do
-  hostname  'bedrock03'
-  action    :create_if_missing
+csync2_config '/etc/csync2.cfg' do
+  hosts [
+    {name: 'bedrock01', ip_address: '192.168.33.11'},
+    {name: 'bedrock02', ip_address: '192.168.33.12'},
+    {name: 'bedrock03', ip_address: '192.168.33.13'}
+  ]
 end

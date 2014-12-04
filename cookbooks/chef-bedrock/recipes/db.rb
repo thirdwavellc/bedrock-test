@@ -7,6 +7,7 @@
 #
 #
 
+include_recipe "apt::default"
 include_recipe 'capistrano-base::mysql-server'
 
 capistrano_mysql 'bedrock' do
@@ -16,3 +17,6 @@ capistrano_mysql 'bedrock' do
   db_password 'bedrock'
   db_environments ['production']
 end
+
+include_recipe "consul::default"
+include_recipe "consul-services::mysql"

@@ -27,7 +27,7 @@ namespace :deploy do
   desc 'Restart lsyncd'
   task :restart_lsyncd do
     on roles(:app), in: :sequence, wait: 5 do
-      execute :service, :lsyncd, :restart
+      execute :sudo, :service, :lsyncd, :restart
     end
   end
 end

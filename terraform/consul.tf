@@ -46,3 +46,23 @@ resource "consul_keys" "bedrock" {
     value = "http://bedrock.dev/wp"
   }
 }
+
+resource "consul_keys" "haproxy" {
+  key {
+    name = "maxconn"
+    path = "haproxy/global/maxconn"
+    value = "4096"
+  }
+
+  key {
+    name = "host"
+    path = "haproxy/admin/host"
+    value = "0.0.0.0"
+  }
+
+  key {
+    name = "port"
+    path = "haproxy/admin/port"
+    value = "22002"
+  }
+}
