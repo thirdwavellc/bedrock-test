@@ -1,83 +1,77 @@
 # Bedrock Test
 
-This repo serves as a testing ground for deploying WordPress applications using
-Bedrock. It uses Vagrant, Virtualbox, and Chef to configure the machines.
+This repo serves as a reference implementation for deploying highly available
+WordPress applications using Bedrock, Chef, and Consul, among other tools.
 
-## Virtual Machines
+Previously, this cookbook accommodated multiple configurations (all-in-one,
+multi-tenant, consul, haproxy, etc.), however we are now standardizing on a
+single configuration designed for high availability. This ultimately merges the
+consul and haproxy aspects, and will also allow for multi-tenancy. It will not,
+however, include any reference for an all-in-one implementation, as this does
+not match our end goal. It should still be possible to do an all-in-one config
+by simply using all recipes on a single node, excluding any unneeded elements
+(e.g. haproxy, lsyncd/csync2, etc.), however it remains untested.
 
-Before you start any virtual machines, enter your Github account name in the
-ssh-import-id section of the CHEF_JSON variable corresponding to the machine
-you want to use, located in the Vagrantfile:
+**Warning:** This requires a lot of resources. You will be running 8+ virtual
+machines locally, so make sure you're running this on a relatively beefy machine.
+We would recommend at least 16GB of RAM for optimal performance, however it has
+worked on machines with as little as 8GB of RAM.
 
-	ssh_import_id: {
-		users: [{name: 'deploy', github_accounts: %w{your-name-here}}]
-	}
+## Installation/Usage
 
-This will automatically import your public keys stored on Github to the machine
-you are provisioning. Make sure your local computer's public key is registered
-with your Github account. Password-based ssh login for the deploy user is not
-enabled, so Capistrano will fail unless you have an ssh key imported.
+### Consul
 
-There are currently two types of machines configured:
+We are using consul for monitoring, as well as template generation using
+[consul-template](https://github.com/hashicorp/consul-template).
 
-### All-in-one Machine
+#### Consul Server Cluster
 
-This is a simple all-in-one machine. To start it:
-
-	vagrant up production
-
-### Multi-tenant Machine
-
-This machine has two sites, bedrock1, and bedrock2. There are also two
-cookbooks written to help configure them using the chef cookbook
-[capistrano-wordpress](https://github.com/adamkrone/chef-capistrano-wordpress).
-In this instance, we're deploying the same code as two different apps, but we
-can create posts, upload media, etc. independently so we can test to make sure
-they don't interfere with one another. To start the machine:
-
-	vagrant up multi-tenant
-
-## Deploy
-
-Bedrock uses Capistrano to deploy, so make sure you have ruby installed and
-install the gems.
-
-	bundle install
-
-Currently there are 3 stages setup:
-
-* production
-* bedrock1
-* bedrock2
-
-The production stage will deploy to the Production machine, while bedrock1 and bedrock2
-will deploy to the Multi-tenant machine. To deploy bedrock1, for example:
-
-	bundle exec cap bedrock1 deploy
-
-When this completes, bedrock1 should be accessible at [bedrock1.dev](http://bedrock1.dev)
-
-## Consul
-
-There is a consul branch that currently implements joining a cluster, registering
-apache and mysql as services with some basic checks, and writing bedrock1's .env
-config file using [consul-template](https://github.com/hashicorp/consul-template).
-
-Make sure you checkout the consul branch before continuing.
-
-### Consul Server Cluster
-
-To get a simple consul cluster to test out these features, refer to
+Before you start up the bedrock-test cluster, you will need a cluster of consul
+servers. We have setup a simple vagrant configuration that will handle this for
+you, which you can find on github:
 [vagrant-consul-cluster](https://github.com/adamkrone/vagrant-consul-cluster).
 
-### Terraform
+#### Terraform
 
-The keys that consul-template uses to generate the .env config for bedrock1 must
-be added after you spin up the consul server cluster. You can either do this
-through the web ui, or using [Terraform](https://terraform.io/).
+There are a few keys that we need to add to consul in order to properly generate
+the templates for the web servers and haproxy. You can either do this through
+the web ui, or using [Terraform](https://terraform.io/).
 
 From the terraform directory, run:
 
 	terraform apply
 
 to automatically add the keys to your consul cluster.
+
+### Virtual Machines
+
+Once you have the consul server cluster running, you can move on to the bedrock
+test cluster. Before you start any virtual machines, enter your Github account
+name in the GITHUB_ACCOUNTS constant, located in the Vagrantfile:
+
+	GITHUB_ACCOUNTS = ['your-name-here']
+
+This will automatically import your public keys stored on Github to the machine
+you are provisioning. Make sure your local computer's public key is registered
+with your Github account. Password-based ssh login for the deploy user is not
+enabled, so Capistrano will fail to deploy unless you have an ssh key imported.
+If you are unsure how to add your ssh key to Github, or how to create one in
+the first place, please refer to
+[Github's documentation](https://help.github.com/articles/generating-ssh-keys/)
+
+To start up the cluster:
+
+	vagrant up
+
+### Deploy
+
+Bedrock uses Capistrano to deploy, so make sure you have ruby installed and
+install the gems.
+
+	bundle install
+
+A production stage has been added for deployment using Capistrano:
+
+	bundle exec cap production deploy
+
+When this completes, it should be accessible at [bedrock.dev](http://bedrock.dev)
