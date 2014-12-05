@@ -4,76 +4,89 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
-CHEF_JSON = {
-  capistrano_base: {
-    app_name: 'bedrock_test',
-    db: {
-      name: 'bedrock_test',
-      environments: ['production']
-    }
-  }
-}
+GITHUB_ACCOUNTS = ['adamkrone']
 
-CHEF_JSON_PROD = CHEF_JSON.merge!({
-  capistrano_wordpress: {
-    home: 'http://192.168.33.11',
-    siteurl: 'http://192.168.33.11/wp'
-  },
-  ssh_import_id: {
-    users: [
-      {
-        name: 'deploy',
-        github_accounts: %w{adamkrone}
-      }
-    ]
-  }
-})
-
-CHEF_JSON_MULTI_TENANT = CHEF_JSON.merge!({
-  ssh_import_id: {
-    users: [{name: 'deploy', github_accounts: %w{adamkrone}}]
-  }
-})
+NUMBER_NODES = 3
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "chef/ubuntu-14.04"
 
   config.omnibus.chef_version = :latest
 
-  if Vagrant.has_plugin?("vagrant-cachier")
-    config.cache.scope = :box
-  end
+  1.upto(NUMBER_NODES) do |num|
+    name = "bedrock0#{num}"
+    ip_address = "192.168.33.#{10 + num}"
+    config.vm.define name do |node|
+      node.vm.hostname = "#{name}.dev"
+      node.vm.network "private_network", ip: ip_address
 
-  config.vm.define :production do |prod|
-    prod.vm.hostname = "bedrock-test.prod"
-    prod.vm.network "private_network", ip: "192.168.33.11"
+      node.vm.provision "chef_solo" do |chef|
+        chef.data_bags_path = "data_bags"
+        chef.add_recipe "chef-solo-search::default"
+        chef.add_recipe "bedrock::production"
 
-    config.vm.provision "chef_solo" do |chef|
-      chef.data_bags_path = "data_bags"
-      chef.add_recipe "chef-solo-search::default"
-      chef.add_recipe "git::default"
-      chef.add_recipe "capistrano-wordpress::all-in-one-role"
-      chef.add_recipe "ssh-import-id::default"
-
-      chef.json = CHEF_JSON_PROD
+        chef.json = {
+          consul: {
+            service_mode: 'client',
+            service_user: 'root',
+            service_group: 'root',
+            servers: ['172.20.20.10', '172.20.20.11', '172.20.20.12'],
+            bind_interface: 'eth1',
+            bind_addr: ip_address,
+            datacenter: 'vagrant'
+          },
+          ssh_import_id: {
+            users: [
+              {
+                name: 'deploy',
+                github_accounts: GITHUB_ACCOUNTS
+              }
+            ]
+          }
+        }
+      end
     end
   end
 
-  config.vm.define 'multi-tenant' do |dev|
-    dev.vm.hostname = "bedrock1.dev"
-    dev.hostsupdater.aliases = ["bedrock2.dev"]
-    dev.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.define 'db' do |db|
+    db.vm.hostname = 'db.bedrock.dev'
+    db.vm.network "private_network", ip: "192.168.33.20"
 
-    dev.vm.provision "chef_solo" do |chef|
-      chef.data_bags_path = "data_bags"
-      chef.add_recipe "apt::default"
-      chef.add_recipe "git::default"
-      chef.add_recipe "chef-solo-search::default"
-      chef.add_recipe "bedrock1::production"
-      chef.add_recipe "bedrock2::production"
-      chef.add_recipe "ssh-import-id::default"
+    db.vm.provision "chef_solo" do |chef|
+      chef.add_recipe "bedrock::db"
 
-      chef.json = CHEF_JSON_MULTI_TENANT
+      chef.json = {
+        consul: {
+          service_mode: 'client',
+          service_user: 'root',
+          service_group: 'root',
+          servers: ['172.20.20.10', '172.20.20.11', '172.20.20.12'],
+          bind_interface: 'eth1',
+          bind_addr: '192.168.33.20',
+          datacenter: 'vagrant'
+        }
+      }
+    end
+  end
+
+  config.vm.define 'haproxy' do |haproxy|
+    haproxy.vm.hostname = 'bedrock.dev'
+    haproxy.vm.network "private_network", ip: "192.168.33.10"
+
+    haproxy.vm.provision "chef_solo" do |chef|
+      chef.add_recipe "bedrock::haproxy"
+
+      chef.json = {
+        consul: {
+          service_mode: 'client',
+          service_user: 'root',
+          service_group: 'root',
+          servers: ['172.20.20.10', '172.20.20.11', '172.20.20.12'],
+          bind_interface: 'eth1',
+          bind_addr: '192.168.33.10',
+          datacenter: 'vagrant'
+        }
+      }
     end
   end
 end

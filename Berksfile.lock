@@ -1,18 +1,32 @@
 DEPENDENCIES
-  bedrock1
-    path: cookbooks/chef-bedrock1
-  bedrock2
-    path: cookbooks/chef-bedrock2
+  bedrock
+    path: cookbooks/chef-bedrock
   capistrano-base
     git: git://github.com/adamkrone/chef-capistrano-base.git
-    revision: 1b37d30645795e568a1439f5d92c81344b29b280
+    revision: afea7755ec5e8c79fa7051292ed51981cdab8558
   capistrano-wordpress
     git: git://github.com/adamkrone/chef-capistrano-wordpress.git
     revision: fb429dc7a9f796087afa1b4d4f788daea8dafdf1
   chef-solo-search
     git: git://github.com/edelight/chef-solo-search.git
     revision: 848fad1461c78fd502975f1df2e14eed12610635
+  consul
+    git: git://github.com/johnbellone/consul-cookbook.git
+    revision: 553d25f945eb1707db6b863766226d71e0a3c6d8
+    ref: 553d25f
+  consul-services
+    git: git://github.com/adamkrone/chef-consul-services.git
+    revision: 21198d9af3a7c5de2be771023f7019d69afa294d
+  consul-template
+    git: git://github.com/adamkrone/chef-consul-template.git
+    revision: 4b9973b7d27b189be2b22149ae6bffa21400f8ec
+  csync2
+    git: git://github.com/adamkrone/chef-csync2.git
+    revision: 3f475d188189d0291f7e049d1ff2ef15759f28fb
   git
+  lsyncd
+    git: git://github.com/adamkrone/chef-lsyncd.git
+    revision: d8cc4aa82e1dcfa4f98f805bdd57514168a1c1aa
   ssh-import-id
     git: git://github.com/adamkrone/chef-ssh-import-id.git
     revision: e9efba5202073c67cfd2c025c8982c0825dd228b
@@ -29,13 +43,20 @@ GRAPH
     7-zip (>= 0.0.0)
     windows (>= 0.0.0)
   aws (2.5.0)
-  bedrock1 (0.1.0)
+  bedrock (0.1.0)
+    apt (>= 0.0.0)
     capistrano-wordpress (>= 0.0.0)
-  bedrock2 (0.1.0)
-    capistrano-wordpress (>= 0.0.0)
-  build-essential (2.1.2)
-  capistrano-base (0.2.0)
-    apache2 (>= 0.0.0)
+    consul (>= 0.0.0)
+    consul-services (>= 0.0.0)
+    consul-template (>= 0.0.0)
+    csync2 (>= 0.0.0)
+    git (>= 0.0.0)
+    haproxy (>= 0.0.0)
+    lsyncd (>= 0.0.0)
+    ssh-import-id (>= 0.0.0)
+  build-essential (2.1.3)
+  capistrano-base (0.3.0)
+    apache2 (~> 2.0.0)
     apt (>= 0.0.0)
     database (>= 0.0.0)
     mysql (>= 0.0.0)
@@ -58,16 +79,32 @@ GRAPH
   chef-solo-search (0.5.1)
   chef-sugar (2.4.1)
   chef_handler (1.1.6)
-  composer (1.0.6)
+  composer (1.1.0)
     php (>= 0.0.0)
     windows (>= 0.0.0)
+  consul (0.5.0)
+    ark (>= 0.0.0)
+    golang (~> 1.3.0)
+    runit (>= 0.0.0)
+    yum-repoforge (>= 0.0.0)
+  consul-services (0.2.0)
+    consul (>= 0.0.0)
+    curl (>= 0.0.0)
+  consul-template (0.4.1)
+    ark (>= 0.0.0)
+    golang (~> 1.3.0)
+    runit (>= 0.0.0)
+  cpu (0.2.0)
+  csync2 (0.1.0)
+    hostsfile (>= 0.0.0)
+  curl (2.0.1)
   database (2.3.0)
     aws (>= 0.0.0)
     mysql (>= 5.0.0)
     mysql-chef_gem (>= 0.0.0)
     postgresql (>= 1.0.0)
     xfs (>= 0.0.0)
-  dmg (2.2.0)
+  dmg (2.2.2)
   git (4.0.2)
     build-essential (>= 0.0.0)
     dmg (>= 0.0.0)
@@ -75,16 +112,22 @@ GRAPH
     windows (>= 0.0.0)
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
-  iis (2.1.5)
-    windows (>= 1.2.6)
+  golang (1.3.0)
+  haproxy (1.6.6)
+    build-essential (>= 0.0.0)
+    cpu (>= 0.2.0)
+  hostsfile (2.4.5)
+  iis (2.1.6)
+    windows (>= 1.34.6)
   iptables (0.14.0)
   logrotate (1.7.0)
-  mysql (5.5.4)
+  lsyncd (0.1.0)
+  mysql (5.6.1)
     yum-mysql-community (>= 0.0.0)
   mysql-chef_gem (0.0.5)
     build-essential (>= 0.0.0)
     mysql (>= 0.0.0)
-  nodejs (2.1.0)
+  nodejs (2.2.0)
     apt (>= 0.0.0)
     ark (>= 0.0.0)
     build-essential (>= 0.0.0)
@@ -102,7 +145,7 @@ GRAPH
   php-fpm (0.7.0)
     apt (>= 0.0.0)
     yum (>= 3.0)
-  postgresql (3.4.10)
+  postgresql (3.4.14)
     apt (>= 1.9.0)
     build-essential (>= 0.0.0)
     openssl (>= 0.0.0)
@@ -115,14 +158,17 @@ GRAPH
     apt (>= 0.0.0)
   sudo (2.7.1)
   users (1.7.0)
-  windows (1.34.6)
+  windows (1.34.8)
     chef_handler (>= 0.0.0)
   xfs (1.1.0)
   xml (1.2.6)
     build-essential (>= 0.0.0)
     chef-sugar (>= 0.0.0)
-  yum (3.4.0)
-  yum-epel (0.5.1)
+  yum (3.5.1)
+  yum-epel (0.5.3)
     yum (~> 3.0)
   yum-mysql-community (0.1.10)
     yum (>= 3.0)
+  yum-repoforge (0.4.0)
+    yum (~> 3.0)
+    yum-epel (>= 0.0.0)
