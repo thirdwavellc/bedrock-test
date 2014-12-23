@@ -25,8 +25,7 @@ DEPENDENCIES
     git: git://github.com/adamkrone/chef-ssh-import-id.git
     revision: e9efba5202073c67cfd2c025c8982c0825dd228b
   wordpress-cluster
-    git: git://github.com/adamkrone/chef-wordpress-cluster.git
-    revision: 45446f400cf14248456438ce5b863ac1b65bb206
+    path: ../chef-wordpress-cluster
 
 GRAPH
   7-zip (1.0.2)
