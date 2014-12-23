@@ -1,9 +1,7 @@
 set :stage, :production
 set :deploy_to, '/var/www/bedrock'
 
-server '192.168.33.11', user: 'deploy', roles: %w{web app}
-server '192.168.33.12', user: 'deploy', roles: %w{web app}
-server '192.168.33.13', user: 'deploy', roles: %w{web app}
+server '192.168.33.10', user: 'deploy', roles: %w{web app}
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options

@@ -8,14 +8,14 @@
 #
 
 include_recipe "apt::default"
-include_recipe 'capistrano-base::mysql-server'
+include_recipe 'mysql::server'
 
-capistrano_mysql 'bedrock' do
+capistrano_mysql_database 'production' do
+  app_name 'bedrock'
+  user 'bedrock'
+  user_host '%'
+  user_password 'bedrock'
   mysql_root_password node['mysql']['server_root_password']
-  db_user 'bedrock'
-  db_user_host '%'
-  db_password 'bedrock'
-  db_environments ['production']
 end
 
 include_recipe "consul::default"
