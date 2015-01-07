@@ -12,20 +12,20 @@ DEPENDENCIES
     revision: 72bd5e3507056e5c931ee0cf7516ce1bfbce6d51
   consul
     git: git://github.com/johnbellone/consul-cookbook.git
-    revision: 553d25f945eb1707db6b863766226d71e0a3c6d8
-    ref: 553d25f
+    revision: 1553151a302167f385d64b8d9edfe2257f681419
   consul-services
     git: git://github.com/adamkrone/chef-consul-services.git
     revision: 21198d9af3a7c5de2be771023f7019d69afa294d
   consul-template
     git: git://github.com/adamkrone/chef-consul-template.git
-    revision: 9959785ad9a0da32c312ea2842aa23504e83a3d9
+    revision: cc66907f9ac65397a66c452d1be4684d8041da91
   git
   ssh-import-id
     git: git://github.com/adamkrone/chef-ssh-import-id.git
     revision: e9efba5202073c67cfd2c025c8982c0825dd228b
   wordpress-cluster
-    path: ../chef-wordpress-cluster
+    git: git://github.com/adamkrone/chef-wordpress-cluster.git
+    revision: 7b34d48be96332dd13eb0b1c5196de513b0901a4
 
 GRAPH
   7-zip (1.0.2)
@@ -33,7 +33,7 @@ GRAPH
   apache2 (3.0.0)
     iptables (>= 0.0.0)
     logrotate (>= 0.0.0)
-  apt (2.6.0)
+  apt (2.6.1)
   ark (0.9.0)
     7-zip (>= 0.0.0)
     windows (>= 0.0.0)
@@ -67,22 +67,22 @@ GRAPH
     sudo (>= 0.0.0)
     users (>= 0.0.0)
   chef-solo-search (0.5.2)
-  chef-sugar (2.4.1)
+  chef-sugar (2.5.0)
   chef_handler (1.1.6)
   composer (1.1.0)
     php (>= 0.0.0)
     windows (>= 0.0.0)
-  consul (0.5.0)
+  consul (0.6.0)
     ark (>= 0.0.0)
-    golang (~> 1.3.0)
+    golang (~> 1.4.0)
     runit (>= 0.0.0)
     yum-repoforge (>= 0.0.0)
   consul-services (0.2.0)
     consul (>= 0.0.0)
     curl (>= 0.0.0)
-  consul-template (0.4.3)
+  consul-template (0.5.1)
     ark (>= 0.0.0)
-    golang (~> 1.3.0)
+    golang (~> 1.4.0)
     runit (>= 0.0.0)
   cpu (0.2.0)
   csync2 (0.1.0)
@@ -94,20 +94,20 @@ GRAPH
     postgresql (>= 1.0.0)
     xfs (>= 0.0.0)
   dmg (2.2.2)
-  git (4.0.2)
+  git (4.1.0)
     build-essential (>= 0.0.0)
     dmg (>= 0.0.0)
-    runit (>= 1.0.0)
+    runit (>= 1.0)
     windows (>= 0.0.0)
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
-  golang (1.3.0)
+  golang (1.4.0)
   haproxy (1.6.6)
     build-essential (>= 0.0.0)
     cpu (>= 0.2.0)
   iis (2.1.6)
     windows (>= 1.34.6)
-  iptables (0.14.0)
+  iptables (0.14.1)
   keepalived (1.2.0)
   logrotate (1.7.0)
   lsyncd (0.2.2)
@@ -122,7 +122,7 @@ GRAPH
     ark (>= 0.0.0)
     build-essential (>= 0.0.0)
     yum-epel (>= 0.0.0)
-  openssl (2.0.0)
+  openssl (2.0.2)
     chef-sugar (>= 0.0.0)
   php (1.5.0)
     build-essential (>= 0.0.0)
@@ -163,7 +163,7 @@ GRAPH
     build-essential (>= 0.0.0)
     chef-sugar (>= 0.0.0)
   yum (3.0.6)
-  yum-epel (0.5.3)
+  yum-epel (0.6.0)
     yum (~> 3.0)
   yum-mysql-community (0.1.11)
     yum (>= 3.0)

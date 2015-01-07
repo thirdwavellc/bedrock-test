@@ -7,7 +7,7 @@
 #
 #
 
-include_recipe "apt::default"
+include_recipe 'apt::default'
 include_recipe 'mysql::server'
 
 capistrano_mysql_database 'production' do
@@ -18,5 +18,5 @@ capistrano_mysql_database 'production' do
   mysql_root_password node['mysql']['server_root_password']
 end
 
-include_recipe "consul::default"
-include_recipe "consul-services::mysql"
+include_recipe 'consul::default'
+include_recipe 'consul-services::mysql'

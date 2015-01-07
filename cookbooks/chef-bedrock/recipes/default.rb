@@ -2,7 +2,7 @@
 # Cookbook Name:: bedrock
 # Recipe:: default
 #
-# Copyright (C) 2014 
+# Copyright (C) 2014
 #
-# 
+#
 #
