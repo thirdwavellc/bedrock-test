@@ -22,7 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.define 'staging-web' do |node|
-    node.vm.hostname = 'bedrock.prod'
+    node.vm.hostname = 'bedrock.stg'
     node.vm.network 'private_network', ip: '192.168.33.10'
 
     node.vm.provision 'chef_solo' do |chef|
@@ -33,7 +33,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.define 'staging-db' do |db|
-    db.vm.hostname = 'db.bedrock.dev'
+    db.vm.hostname = 'db.bedrock.stg'
     db.vm.network 'private_network', ip: '192.168.33.20'
 
     db.vm.provision 'chef_solo' do |chef|

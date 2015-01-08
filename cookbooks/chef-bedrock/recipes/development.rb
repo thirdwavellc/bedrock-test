@@ -7,8 +7,6 @@
 #
 #
 
-include_recipe 'apt::default'
-
 wordpress_cluster_app 'bedrock' do
   deployment_user 'vagrant'
   deployment_group 'vagrant'
@@ -16,11 +14,10 @@ wordpress_cluster_app 'bedrock' do
   development true
 end
 
-include_recipe 'mysql::server'
-
-capistrano_mysql_database 'development' do
+wordpress_cluster_db 'development' do
   app_name 'bedrock'
   user 'bedrock'
   user_password 'bedrock'
   mysql_root_password node['mysql']['server_root_password']
+  development true
 end

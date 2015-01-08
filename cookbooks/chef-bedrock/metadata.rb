@@ -8,6 +8,7 @@ version          '0.1.0'
 
 depends 'apt'
 depends 'git'
+depends 'unzip'
 depends 'ssh-import-id'
 depends 'wordpress-cluster'
 depends 'consul'
