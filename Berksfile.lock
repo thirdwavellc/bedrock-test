@@ -15,7 +15,7 @@ DEPENDENCIES
     revision: 1553151a302167f385d64b8d9edfe2257f681419
   consul-cluster
     git: git://github.com/adamkrone/chef-consul-cluster.git
-    revision: 4918b5988789faf1f3022b0241af76971a2c704f
+    revision: c7c371c52438abbae8256e2b1e81fe7c76686adb
   consul-services
     git: git://github.com/adamkrone/chef-consul-services.git
     revision: 21198d9af3a7c5de2be771023f7019d69afa294d
@@ -30,7 +30,7 @@ DEPENDENCIES
     revision: d2e4a55ac0d3a9c9ad49a0ab52105c276863161b
   wordpress-cluster
     git: git://github.com/adamkrone/chef-wordpress-cluster.git
-    revision: 1b7af0c0ef092d81d3fb76cff1c6ce2ed3071d94
+    revision: c75dbd73a7ffe8be21a719fa0eec23d5b73a347d
 
 GRAPH
   7-zip (1.0.2)
@@ -75,7 +75,7 @@ GRAPH
   chef-solo-search (0.5.2)
   chef-sugar (2.5.0)
   chef_handler (1.1.6)
-  composer (1.1.0)
+  composer (2.0.0)
     php (>= 0.0.0)
     windows (>= 0.0.0)
   consul (0.6.0)
@@ -156,7 +156,7 @@ GRAPH
     build-essential (>= 0.0.0)
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
-  ssh-hardening (1.0.1)
+  ssh-hardening (1.0.2)
   ssh-import-id (0.1.0)
     apt (>= 0.0.0)
   sudo (2.7.1)

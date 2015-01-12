@@ -29,11 +29,62 @@ Simply clone the repo, cd into its directory, and run:
 
 This will create a 3-node cluster of consul servers.
 
+We are currently using the ACL features of consul in order to match as closely
+to production as possible. The master token is included in the README at the
+vagrant-consul-cluster link above. When vagrant finishes creating/provisioning
+the servers, access [the web ui](http://consul01:8500/ui/).
+
+Click the settings cog in the upper right, and paste the master token in the
+access token input box. You don't need to click any further buttons or refresh
+the page (doing so will clear the access token and you will have to enter it
+again). Instead, immediately click over to the ACL tab.
+
+We are going to create an ACL token for the bedrock app. Click "New ACL", and
+in the form on the right side of the page, enter "bedrock" for the name, set
+the type to "client", and paste the following into the rules:
+
+	key "" {
+		policy = "deny"
+	}
+
+	key "bedrock/" {
+		policy = "write"
+	}
+
+	key "haproxy/" {
+		policy = "write"
+	}
+
+Upon creation, a token should be generated for the entry we just added. You
+will need to copy this, and paste it into a few places, replacing the example
+values currently in the repo.
+
+terraform/consul.tf in two places:
+
+	resource "consul_keys" "bedrock" {
+		token  = "d9a27ead-a9a7-3868-52b0-b08302eb40ad" # change me
+
+	resource "consul_keys" "haproxy" {
+		token  = "d9a27ead-a9a7-3868-52b0-b08302eb40ad" # change me
+
+cookbooks/chef-bedrock/recipes/web in one place:
+
+	consul_acl_token 'd9a27ead-a9a7-3868-52b0-b08302eb40ad' # change me
+
+You can choose to not replace these values, as the default token is the master
+token used for the ACL. This, however, isn't recommended as it differs from the
+production environment.
+
+The ACL should now be setup for our bedrock application.
+
 #### Terraform
 
 There are a few keys that we need to add to consul in order to properly
 generate the templates for the web servers and haproxy. You can either do this
 through the web ui, or using [Terraform](https://terraform.io/).
+
+In either case, make sure you have properly setup the ACL as described in the
+section above.
 
 From the terraform directory, run:
 

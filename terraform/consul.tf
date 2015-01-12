@@ -4,6 +4,8 @@ provider "consul" {
 }
 
 resource "consul_keys" "bedrock" {
+  token  = "3a6efcc8-b0e5-93e8-9188-b7cda829b929"
+
   key {
     name = "db_name"
     path = "bedrock/db_name"
@@ -25,7 +27,7 @@ resource "consul_keys" "bedrock" {
   key {
     name = "db_host"
     path = "bedrock/db_host"
-    value = "192.168.33.20"
+    value = "mysql.service.consul"
   }
 
   key {
@@ -96,6 +98,8 @@ resource "consul_keys" "bedrock" {
 }
 
 resource "consul_keys" "haproxy" {
+  token  = "3a6efcc8-b0e5-93e8-9188-b7cda829b929"
+
   key {
     name = "maxconn"
     path = "haproxy/global/maxconn"
