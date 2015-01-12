@@ -15,7 +15,7 @@ DEPENDENCIES
     revision: 1553151a302167f385d64b8d9edfe2257f681419
   consul-cluster
     git: git://github.com/adamkrone/chef-consul-cluster.git
-    revision: c7c371c52438abbae8256e2b1e81fe7c76686adb
+    revision: 4609a08a6f3ae8e8c3847b8ae021e36c96465e45
   consul-services
     git: git://github.com/adamkrone/chef-consul-services.git
     revision: 21198d9af3a7c5de2be771023f7019d69afa294d
