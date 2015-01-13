@@ -12,7 +12,7 @@ DEPENDENCIES
     revision: 72bd5e3507056e5c931ee0cf7516ce1bfbce6d51
   consul
     git: git://github.com/johnbellone/consul-cookbook.git
-    revision: 1553151a302167f385d64b8d9edfe2257f681419
+    revision: 7ea99ed929b2d06952711a8089a0d753617195e8
   consul-cluster
     git: git://github.com/adamkrone/chef-consul-cluster.git
     revision: 4609a08a6f3ae8e8c3847b8ae021e36c96465e45
@@ -22,6 +22,14 @@ DEPENDENCIES
   consul-template
     git: git://github.com/adamkrone/chef-consul-template.git
     revision: cc66907f9ac65397a66c452d1be4684d8041da91
+  csync2
+    git: git://github.com/adamkrone/chef-csync2.git
+    revision: c5a899cc6844c0d4b3b6c0845fdd7d2bf8c58d07
+  haproxy
+  hostsfile
+  lsyncd
+    git: git://github.com/adamkrone/chef-lsyncd.git
+    revision: 0963a3aa9bde474378d213a7870c881c96561ae5
   ssh-import-id
     git: git://github.com/adamkrone/chef-ssh-import-id.git
     revision: e9efba5202073c67cfd2c025c8982c0825dd228b
@@ -29,8 +37,7 @@ DEPENDENCIES
     git: git://github.com/thirdwavellc/chef-unzip.git
     revision: d2e4a55ac0d3a9c9ad49a0ab52105c276863161b
   wordpress-cluster
-    git: git://github.com/adamkrone/chef-wordpress-cluster.git
-    revision: c75dbd73a7ffe8be21a719fa0eec23d5b73a347d
+    path: ../chef-wordpress-cluster
 
 GRAPH
   7-zip (1.0.2)
@@ -94,6 +101,7 @@ GRAPH
     runit (>= 0.0.0)
   cpu (0.2.0)
   csync2 (0.1.0)
+    hostsfile (>= 0.0.0)
   curl (2.0.1)
   database (2.3.1)
     aws (>= 0.0.0)
@@ -115,13 +123,13 @@ GRAPH
     cpu (>= 0.2.0)
   hg (0.1.2)
     mercurial (>= 0.0.0)
+  hostsfile (2.4.5)
   iis (2.1.6)
     windows (>= 1.34.6)
   iptables (0.14.1)
   keepalived (1.2.0)
   logrotate (1.7.0)
-  lsyncd (0.2.2)
-    yum (~> 3.0.0)
+  lsyncd (0.1.0)
   mercurial (2.0.4)
     build-essential (>= 0.0.0)
     python (>= 0.0.0)
@@ -178,12 +186,13 @@ GRAPH
     keepalived (>= 0.0.0)
     lsyncd (>= 0.0.0)
     ssh-import-id (>= 0.0.0)
+    unzip (>= 0.0.0)
     yum (>= 0.0.0)
   xfs (1.1.0)
   xml (1.2.9)
     build-essential (>= 0.0.0)
     chef-sugar (>= 0.0.0)
-  yum (3.0.6)
+  yum (3.5.2)
   yum-epel (0.6.0)
     yum (~> 3.0)
   yum-mysql-community (0.1.11)
