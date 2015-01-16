@@ -6,7 +6,7 @@ DEPENDENCIES
     revision: 13f90cf5d29dccc4da0430e49d580b2cb53de8ea
   capistrano-wordpress
     git: git://github.com/adamkrone/chef-capistrano-wordpress.git
-    revision: ab2e3abe239ab4193b1ec039a8e4f03d56a2038e
+    revision: 6879457e4aab4c4b5d8a073f54f1b75df30f1ae9
   chef-solo-search
     git: git://github.com/edelight/chef-solo-search.git
     revision: 72bd5e3507056e5c931ee0cf7516ce1bfbce6d51
@@ -18,7 +18,7 @@ DEPENDENCIES
     revision: 4609a08a6f3ae8e8c3847b8ae021e36c96465e45
   consul-services
     git: git://github.com/adamkrone/chef-consul-services.git
-    revision: 9b2925a5dceb0f22b6e83504f7e94253dd72a3bb
+    revision: 2627d8c01f058cc3f9c63641e4f9b772fb9bc35e
   consul-template
     git: git://github.com/adamkrone/chef-consul-template.git
     revision: cc66907f9ac65397a66c452d1be4684d8041da91
@@ -38,7 +38,7 @@ DEPENDENCIES
     revision: d2e4a55ac0d3a9c9ad49a0ab52105c276863161b
   wordpress-cluster
     git: git://github.com/adamkrone/chef-wordpress-cluster.git
-    revision: 6a497ba67a5302a82aa15e4a2d2ea5bed82aef09
+    revision: 189bed751cb4258a0165cf57da5de86547710cca
 
 GRAPH
   7-zip (1.0.2)
@@ -161,11 +161,11 @@ GRAPH
   python (1.4.6)
     build-essential (>= 0.0.0)
     yum-epel (>= 0.0.0)
-  runit (1.5.12)
+  runit (1.5.14)
     build-essential (>= 0.0.0)
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
-  ssh-hardening (1.0.2)
+  ssh-hardening (1.0.3)
   ssh-import-id (0.1.0)
     apt (>= 0.0.0)
   sudo (2.7.1)
