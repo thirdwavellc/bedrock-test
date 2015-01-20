@@ -60,16 +60,15 @@ will need to copy this, and paste it into a few places, replacing the example
 values currently in the repo.
 
 terraform/consul.tf in two places:
-
 	resource "consul_keys" "bedrock" {
-		token  = "d9a27ead-a9a7-3868-52b0-b08302eb40ad" # change me
+		token  = "3a6efcc8-b0e5-93e8-9188-b7cda829b929" # change me
 
 	resource "consul_keys" "haproxy" {
-		token  = "d9a27ead-a9a7-3868-52b0-b08302eb40ad" # change me
+		token  = "3a6efcc8-b0e5-93e8-9188-b7cda829b929" # change me
 
-cookbooks/chef-bedrock/recipes/web in one place:
+data_bags/consul/acl.json in one place:
 
-	consul_acl_token 'd9a27ead-a9a7-3868-52b0-b08302eb40ad' # change me
+	"token": "3a6efcc8-b0e5-93e8-9188-b7cda829b929" # change me
 
 You can choose to not replace these values, as the default token is the master
 token used for the ACL. This, however, isn't recommended as it differs from the
@@ -112,7 +111,7 @@ As mentioned, the staging environment requires the consul cluster to be
 running. Before you start any virtual machines, you will need to modify the
 cookbooks/chef-bedrock/recipes/web.rb recipe:
 
-	ssh_import_ids ['adamkrone'] # change 'adamkrone' to your Github username
+	github_accounts ['adamkrone'] # change 'adamkrone' to your Github username
 
 This will automatically import your public keys stored on Github to the machine
 you are provisioning. Make sure your local computer's public key is registered

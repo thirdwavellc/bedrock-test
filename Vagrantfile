@@ -42,6 +42,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     db.vm.network 'private_network', ip: '192.168.33.20'
 
     db.vm.provision 'chef_solo' do |chef|
+      chef.data_bags_path = 'data_bags'
       chef.add_recipe 'bedrock::db'
     end
   end
@@ -52,6 +53,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       lb.vm.network 'private_network', ip: "192.168.33.#{100 + num}"
 
       lb.vm.provision 'chef_solo' do |chef|
+        chef.data_bags_path = 'data_bags'
         if num == 1
           chef.add_recipe "bedrock::haproxy-master"
         else

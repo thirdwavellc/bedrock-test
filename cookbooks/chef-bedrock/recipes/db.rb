@@ -7,6 +7,9 @@
 #
 #
 
+mysql = Chef::DataBagItem.load('mysql', 'root')
+node.override['mysql']['server_root_password'] = mysql['password']
+
 wordpress_cluster_db 'production' do
   app_name 'bedrock'
   user 'bedrock'
