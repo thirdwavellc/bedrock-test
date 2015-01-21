@@ -3,7 +3,7 @@ DEPENDENCIES
     path: cookbooks/chef-bedrock
   capistrano-base
     git: git://github.com/adamkrone/chef-capistrano-base.git
-    revision: 7f0143d843a55a708b0d4b42aaa38fa34253aa2d
+    revision: 2e9f85c55a542f11e90341453224722ea2e0a009
   capistrano-wordpress
     git: git://github.com/adamkrone/chef-capistrano-wordpress.git
     revision: 6879457e4aab4c4b5d8a073f54f1b75df30f1ae9
@@ -67,7 +67,7 @@ GRAPH
     database (~> 2.3.1)
     mysql (~> 5.0)
     nodejs (>= 0.0.0)
-    ssh-hardening (>= 0.0.0)
+    ssh-hardening (= 1.0.2)
     sudo (>= 0.0.0)
     users (>= 0.0.0)
   capistrano-wordpress (0.3.0)
@@ -165,7 +165,7 @@ GRAPH
     build-essential (>= 0.0.0)
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
-  ssh-hardening (1.0.3)
+  ssh-hardening (1.0.2)
   ssh-import-id (0.1.0)
     apt (>= 0.0.0)
   sudo (2.7.1)
