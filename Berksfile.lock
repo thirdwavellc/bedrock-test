@@ -3,7 +3,7 @@ DEPENDENCIES
     path: cookbooks/chef-bedrock
   capistrano-base
     git: git://github.com/adamkrone/chef-capistrano-base.git
-    revision: 13f90cf5d29dccc4da0430e49d580b2cb53de8ea
+    revision: 7f0143d843a55a708b0d4b42aaa38fa34253aa2d
   capistrano-wordpress
     git: git://github.com/adamkrone/chef-capistrano-wordpress.git
     revision: 6879457e4aab4c4b5d8a073f54f1b75df30f1ae9
@@ -15,7 +15,7 @@ DEPENDENCIES
     revision: df4891d56b8252fad50056eb29cdabfe15c68493
   consul-cluster
     git: git://github.com/adamkrone/chef-consul-cluster.git
-    revision: 4609a08a6f3ae8e8c3847b8ae021e36c96465e45
+    revision: c88c0cacefc18faa3794177a76d547dc4e4d6f32
   consul-services
     git: git://github.com/adamkrone/chef-consul-services.git
     revision: 2627d8c01f058cc3f9c63641e4f9b772fb9bc35e
@@ -38,7 +38,7 @@ DEPENDENCIES
     revision: d2e4a55ac0d3a9c9ad49a0ab52105c276863161b
   wordpress-cluster
     git: git://github.com/adamkrone/chef-wordpress-cluster.git
-    revision: 7fc48b6e6ed12b33d3b2f5db1e668d222dbfc8ab
+    revision: 853307a78f227005b7831f3e3e3d89640b1b277f
 
 GRAPH
   7-zip (1.0.2)
@@ -196,7 +196,7 @@ GRAPH
   yum (3.5.2)
   yum-epel (0.6.0)
     yum (~> 3.0)
-  yum-mysql-community (0.1.11)
+  yum-mysql-community (0.1.12)
     yum (>= 3.0)
   yum-repoforge (0.5.0)
     yum (~> 3.0)
