@@ -3,7 +3,7 @@ set :repo_url, 'git@github.com:adamkrone/bedrock-test'
 
 set :branch, :master
 
-set :deploy_to, '/var/www'
+set :deploy_to, '/var/www/bedrock'
 
 set :log_level, :info
 
