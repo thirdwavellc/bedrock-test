@@ -21,7 +21,7 @@ DEPENDENCIES
     revision: 2627d8c01f058cc3f9c63641e4f9b772fb9bc35e
   consul-template
     git: git://github.com/adamkrone/chef-consul-template.git
-    revision: cc66907f9ac65397a66c452d1be4684d8041da91
+    revision: cdd4fadec8a67cd7163f05584d59e21daade6899
   csync2
     git: git://github.com/adamkrone/chef-csync2.git
     revision: c5a899cc6844c0d4b3b6c0845fdd7d2bf8c58d07
