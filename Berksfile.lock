@@ -15,13 +15,16 @@ DEPENDENCIES
     revision: df4891d56b8252fad50056eb29cdabfe15c68493
   consul-cluster
     git: git://github.com/adamkrone/chef-consul-cluster.git
-    revision: 9603be9afc806e8a199279cb8f9ff1a382e9699e
+    revision: 6628ea21c0fd97c0bb0cb0e2d8994e417c9e06de
   consul-services
     git: git://github.com/adamkrone/chef-consul-services.git
     revision: 41bee3919531e88a391268d74cf780543d810430
   consul-template
     git: git://github.com/adamkrone/chef-consul-template.git
     revision: cdd4fadec8a67cd7163f05584d59e21daade6899
+  consul-watches
+    git: git://github.com/adamkrone/chef-consul-watches.git
+    revision: 746f856c0c138c6702e672ed776bd53bcc3877a7
   csync2
     git: git://github.com/adamkrone/chef-csync2.git
     revision: c5a899cc6844c0d4b3b6c0845fdd7d2bf8c58d07
@@ -101,6 +104,8 @@ GRAPH
     ark (>= 0.0.0)
     golang (~> 1.4.0)
     runit (>= 0.0.0)
+  consul-watches (0.1.0)
+    consul (>= 0.0.0)
   cpu (0.2.0)
   csync2 (0.1.0)
     hostsfile (>= 0.0.0)
