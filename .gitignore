@@ -37,3 +37,7 @@ bin
 
 # Terraform (We don't care about saving state)
 *.tfstate*
+
+# Benchmark results
+benchmarks/*.tsv
+benchmarks/*.png
