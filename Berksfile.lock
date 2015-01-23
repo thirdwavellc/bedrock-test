@@ -6,7 +6,7 @@ DEPENDENCIES
     revision: 2e9f85c55a542f11e90341453224722ea2e0a009
   capistrano-wordpress
     git: git://github.com/adamkrone/chef-capistrano-wordpress.git
-    revision: 6879457e4aab4c4b5d8a073f54f1b75df30f1ae9
+    revision: 6bcf7381b31c71bcf43929eb1e411b8733590f03
   chef-solo-search
     git: git://github.com/edelight/chef-solo-search.git
     revision: 72bd5e3507056e5c931ee0cf7516ce1bfbce6d51
