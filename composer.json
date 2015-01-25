@@ -43,7 +43,8 @@
     "php": ">=5.4",
     "johnpbloch/wordpress": "4.1",
     "composer/installers": "v1.0.12",
-    "vlucas/phpdotenv": "1.0.9"
+    "vlucas/phpdotenv": "1.0.9",
+    "wpackagist-plugin/wp-super-cache": "1.4.2"
   },
   "extra": {
     "installer-paths": {
