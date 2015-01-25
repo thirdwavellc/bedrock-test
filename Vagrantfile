@@ -4,7 +4,7 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = '2'
 
-NUMBER_WEB_SERVERS = 2
+NUMBER_WEB_SERVERS = 3
 NUMBER_LOAD_BALANCERS = 2
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -12,12 +12,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.omnibus.chef_version = :latest
 
-  config.vm.define 'dev' do |node|
-    node.vm.hostname = 'bedrock.dev'
-    node.vm.network 'private_network', ip: '192.168.33.9'
-    node.vm.synced_folder './', '/var/www/bedrock/current'
+  config.vm.define 'dev' do |dev|
+    dev.vm.hostname = 'bedrock.dev'
+    dev.vm.network 'private_network', ip: '172.20.10.9'
+    dev.vm.synced_folder './', '/var/www/bedrock/current'
 
-    node.vm.provision 'chef_solo' do |chef|
+    dev.vm.provision 'chef_solo' do |chef|
       chef.data_bags_path = 'data_bags'
       chef.add_recipe 'chef-solo-search::default'
       chef.add_recipe 'bedrock::development'
@@ -25,11 +25,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   1.upto(NUMBER_WEB_SERVERS).each do |num|
-    config.vm.define "staging-web-0#{num}" do |node|
-      node.vm.hostname = "web0#{num}.stg"
-      node.vm.network 'private_network', ip: "192.168.33.#{10 + num}"
+    config.vm.define "staging-web-0#{num}" do |web|
+      web.vm.hostname = "web0#{num}.bedrock.stg"
+      web.vm.network 'private_network', ip: "172.20.10.#{10 + num}"
 
-      node.vm.provision 'chef_solo' do |chef|
+      web.vm.provider 'virtualbox' do |vb|
+        vb.memory = 2048
+        vb.cpus = 2
+      end
+
+      web.vm.provision 'chef_solo' do |chef|
         chef.data_bags_path = 'data_bags'
         chef.add_recipe 'chef-solo-search::default'
         chef.add_recipe 'bedrock::web'
@@ -39,7 +44,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define 'staging-db' do |db|
     db.vm.hostname = 'db.bedrock.stg'
-    db.vm.network 'private_network', ip: '192.168.33.20'
+    db.vm.network 'private_network', ip: '172.20.10.20'
+
+    db.vm.provider 'virtualbox' do |vb|
+      vb.memory = 4096
+      vb.cpus = 2
+    end
 
     db.vm.provision 'chef_solo' do |chef|
       chef.data_bags_path = 'data_bags'
@@ -49,15 +59,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   1.upto(NUMBER_LOAD_BALANCERS).each do |num|
     config.vm.define "staging-lb-0#{num}" do |lb|
-      lb.vm.hostname = "staging-lb-0#{num}.stg"
-      lb.vm.network 'private_network', ip: "192.168.33.#{100 + num}"
+      lb.vm.hostname = "lb0#{num}.bedrock.stg"
+      lb.vm.network 'private_network', ip: "172.20.10.#{100 + num}"
+
+      lb.vm.provider 'virtualbox' do |vb|
+        vb.memory = 512
+        vb.cpus = 1
+      end
 
       lb.vm.provision 'chef_solo' do |chef|
         chef.data_bags_path = 'data_bags'
         if num == 1
-          chef.add_recipe "bedrock::haproxy-master"
+          chef.add_recipe 'bedrock::haproxy-master'
         else
-          chef.add_recipe "bedrock::haproxy-backup"
+          chef.add_recipe 'bedrock::haproxy-backup'
         end
       end
     end

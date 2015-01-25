@@ -6,6 +6,7 @@ description      'Installs/Configures bedrock1'
 long_description 'Installs/Configures bedrock1'
 version          '0.1.0'
 
+depends 'chef-solo-search'
 depends 'apt'
 depends 'git'
 depends 'unzip'

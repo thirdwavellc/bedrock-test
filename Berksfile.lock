@@ -56,6 +56,7 @@ GRAPH
   aws (2.5.0)
   bedrock (0.1.0)
     apt (>= 0.0.0)
+    chef-solo-search (>= 0.0.0)
     consul (>= 0.0.0)
     consul-services (>= 0.0.0)
     consul-template (>= 0.0.0)
