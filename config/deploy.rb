@@ -1,7 +1,7 @@
 set :application, 'bedrock_test'
 set :repo_url, 'git@github.com:adamkrone/bedrock-test'
 
-set :branch, :master
+set :branch, 'performance-tuning'
 
 set :deploy_to, '/var/www/bedrock'
 
