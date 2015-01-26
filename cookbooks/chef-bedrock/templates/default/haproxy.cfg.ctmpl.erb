@@ -17,21 +17,20 @@ defaults
   option redispatch
   balance  roundrobin
 
-# Set up application listeners here.
-
 listen admin
   bind {{key "haproxy/admin/host"}}:{{key "haproxy/admin/port"}}
   mode http
   stats uri /
 
-
 frontend http
   maxconn 2000
   bind 0.0.0.0:8080
-  default_backend servers-http
 
+  acl host_bedrock hdr(host) -i bedrock.stg
 
-backend servers-http
+  use_backend bedrock_cluster if host_bedrock
+
+backend bedrock_cluster
   {{range service "apache2@vagrant"}}
   server {{.Name}} {{.Address}}:{{.Port}}{{end}}
 

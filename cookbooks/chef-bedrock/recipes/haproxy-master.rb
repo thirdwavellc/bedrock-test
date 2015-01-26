@@ -7,6 +7,7 @@
 #
 #
 
+node.normal['varnish']['version'] = '3.0.5'
 node.normal['varnish']['listen_port'] = 80
 node.normal['varnish']['vcl_cookbook'] = 'bedrock'
 
