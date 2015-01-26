@@ -1,0 +1,47 @@
+[mysqld]
+skip-external-locking
+skip-slave-start
+skip-bdb
+skip-innodb
+skip-name-resolve
+
+# Global mem settings
+key_buffer = 24M
+
+max_connections = 200
+
+# Per client mem settings
+
+sort_buffer_size = 4M
+read_buffer_size = 4M
+binlog_cache_size = 2M
+
+max_allowed_packet = 12M
+thread_stack = 128K
+
+table_cache = 128
+thread_cache = 256
+thread_concurrency = 4
+
+myisam_sort_buffer_size = 1M
+tmp_table_size = 12M
+max_heap_table_size = 12M
+
+wait_timeout = 200
+interactive_timeout = 300
+max_connect_errors = 10000
+
+query_cache_type = 1
+query_cache_limit = 4M
+query_cache_size = 64M
+
+[mysqldump]
+quick
+quote-names
+max_allowed_packet = 16M
+
+[mysql]
+#no-auto-rehash # faster start of mysql but no tab completition
+
+[isamchk]
+key_buffer = 16M

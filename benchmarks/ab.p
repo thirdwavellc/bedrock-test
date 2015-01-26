@@ -5,7 +5,7 @@
  set output "ab.png"
 
  # graph a title
- set title "ab -n 1500 -c 150 -g ab.tsv http://bedrock.stg/"
+ set title "ab -n 5000 -c 150 -g ab.tsv http://bedrock.stg/"
 
  # nicer aspect ratio for image size
  set size 1,0.7

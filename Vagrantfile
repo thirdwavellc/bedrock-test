@@ -4,7 +4,7 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = '2'
 
-NUMBER_WEB_SERVERS = 3
+NUMBER_WEB_SERVERS = 2
 NUMBER_LOAD_BALANCERS = 2
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -47,7 +47,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     db.vm.network 'private_network', ip: '172.20.10.20'
 
     db.vm.provider 'virtualbox' do |vb|
-      vb.memory = 4096
+      vb.memory = 2048
       vb.cpus = 2
     end
 

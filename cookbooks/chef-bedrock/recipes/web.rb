@@ -10,12 +10,12 @@
 consul_acl = Chef::DataBagItem.load('consul', 'acl')
 csync2 = Chef::DataBagItem.load('csync2', 'key')
 
-node.override['apache']['prefork']['startservers'] = 64
-node.override['apache']['prefork']['minspareservers'] = 64
-node.override['apache']['prefork']['maxspareservers'] = 128
-node.override['apache']['prefork']['serverlimit'] = 256
-node.override['apache']['prefork']['maxrequestworkers'] = 256
-node.override['apache']['prefork']['maxconnectionsperchild'] = 10_000
+node.override['apache']['prefork']['startservers'] = 50
+node.override['apache']['prefork']['minspareservers'] = 50
+node.override['apache']['prefork']['maxspareservers'] = 100
+node.override['apache']['prefork']['serverlimit'] = 200
+node.override['apache']['prefork']['maxrequestworkers'] = 200
+node.override['apache']['prefork']['maxconnectionsperchild'] = 5_000
 
 wordpress_cluster_app 'bedrock' do
   server_name 'bedrock.prod'
@@ -27,8 +27,7 @@ wordpress_cluster_app 'bedrock' do
   datacenter 'vagrant'
   csync2_hosts [
     {name: 'web01', ip_address: '172.20.10.11'},
-    {name: 'web02', ip_address: '172.20.10.12'},
-    {name: 'web03', ip_address: '172.20.10.13'}
+    {name: 'web02', ip_address: '172.20.10.12'}
   ]
   csync2_key csync2['key']
   lsyncd_watched_dirs ['/var/www/bedrock/shared/web/app/uploads']
