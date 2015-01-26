@@ -12,8 +12,8 @@ node.override['mysql']['server_root_password'] = mysql['password']
 
 directory '/etc/mysql/conf.d'
 
-template '/etc/mysql/conf.d/wordpress-tuning.cfg' do
-  source 'wordpress-tuning.cfg.erb'
+template '/etc/mysql/conf.d/wordpress-tuning.cnf' do
+  source 'wordpress-tuning.cnf.erb'
   action :create
 end
 
