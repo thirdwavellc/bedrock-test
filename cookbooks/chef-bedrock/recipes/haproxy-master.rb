@@ -7,6 +7,11 @@
 #
 #
 
+node.normal['varnish']['listen_port'] = 80
+node.normal['varnish']['vcl_cookbook'] = 'bedrock'
+
+include_recipe 'varnish::default'
+
 keepalived = Chef::DataBagItem.load('keepalived', 'auth')
 consul_acl = Chef::DataBagItem.load('consul', 'acl')
 

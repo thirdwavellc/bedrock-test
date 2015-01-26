@@ -63,8 +63,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       lb.vm.network 'private_network', ip: "172.20.10.#{100 + num}"
 
       lb.vm.provider 'virtualbox' do |vb|
-        vb.memory = 512
-        vb.cpus = 1
+        vb.memory = 2048
+        vb.cpus = 2
       end
 
       lb.vm.provision 'chef_solo' do |chef|
