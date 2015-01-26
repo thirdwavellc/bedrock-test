@@ -13,7 +13,7 @@ function remove_files {
 }
 
 function run_benchmark {
-  ab -n 5000 -c 150 -g ab.tsv http://bedrock.stg/
+  ab -n 5000 -c 400 -g ab.tsv http://bedrock.stg/
 }
 
 function plot_results {
