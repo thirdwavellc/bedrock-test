@@ -10,11 +10,18 @@
 mysql = Chef::DataBagItem.load('mysql', 'root')
 node.override['mysql']['server_root_password'] = mysql['password']
 
-directory '/etc/mysql/conf.d'
+include_recipe 'apt::default'
+
+service 'mysql'
+
+directory '/etc/mysql/conf.d' do
+  recursive true
+end
 
 template '/etc/mysql/conf.d/wordpress-tuning.cnf' do
   source 'wordpress-tuning.cnf.erb'
   action :create
+  notifies :restart, 'service[mysql]', :delayed
 end
 
 wordpress_cluster_db 'production' do

@@ -1,14 +1,11 @@
 [mysqld]
-skip-external-locking
-skip-slave-start
-skip-bdb
-skip-innodb
-skip-name-resolve
+innodb=OFF
+default_storage_engine=MyISAM
 
 # Global mem settings
 key_buffer = 24M
 
-max_connections = 200
+max_connections = 500
 
 # Per client mem settings
 
