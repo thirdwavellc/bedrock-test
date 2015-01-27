@@ -28,7 +28,7 @@ end
 namespace :deploy do
   desc 'Update WordPress template root paths to point to the new release'
   task :update_option_paths do
-    on roles(:app) do
+    on roles(:app, in: :sequence, wait: 5) do
       within fetch(:release_path) do
         if test :wp, :core, 'is-installed'
           [:stylesheet_root, :template_root].each do |option|
