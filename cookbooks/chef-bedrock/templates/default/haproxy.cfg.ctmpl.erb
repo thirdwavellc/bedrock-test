@@ -24,13 +24,13 @@ listen admin
 
 frontend http
   maxconn 2000
-  bind 0.0.0.0:8080
+  bind 0.0.0.0:80
 
   acl host_bedrock hdr(host) -i bedrock.stg
 
   use_backend bedrock_cluster if host_bedrock
 
 backend bedrock_cluster
-  {{range service "apache2@vagrant"}}
+  {{range service "varnish@vagrant"}}
   server {{.Name}} {{.Address}}:{{.Port}}{{end}}
 

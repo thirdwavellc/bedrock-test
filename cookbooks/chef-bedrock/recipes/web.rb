@@ -10,13 +10,6 @@
 consul_acl = Chef::DataBagItem.load('consul', 'acl')
 csync2 = Chef::DataBagItem.load('csync2', 'key')
 
-node.override['apache']['prefork']['startservers'] = 50
-node.override['apache']['prefork']['minspareservers'] = 50
-node.override['apache']['prefork']['maxspareservers'] = 100
-node.override['apache']['prefork']['serverlimit'] = 200
-node.override['apache']['prefork']['maxrequestworkers'] = 200
-node.override['apache']['prefork']['maxconnectionsperchild'] = 5_000
-
 wordpress_cluster_app 'bedrock' do
   server_name 'bedrock.prod'
   scm 'git'
@@ -32,5 +25,3 @@ wordpress_cluster_app 'bedrock' do
   csync2_key csync2['key']
   lsyncd_watched_dirs ['/var/www/bedrock/shared/web/app/uploads']
 end
-
-include_recipe 'wp-cli::default'

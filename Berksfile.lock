@@ -18,7 +18,7 @@ DEPENDENCIES
     revision: 6628ea21c0fd97c0bb0cb0e2d8994e417c9e06de
   consul-services
     git: git://github.com/adamkrone/chef-consul-services.git
-    revision: 41bee3919531e88a391268d74cf780543d810430
+    revision: c290d5bc84cf332d6995d9cb7c4b06ea1803b144
   consul-template
     git: git://github.com/adamkrone/chef-consul-template.git
     revision: 4e583920d227ac70fdf8e2ce11d90b6a21dc8bbf
@@ -41,7 +41,7 @@ DEPENDENCIES
     revision: d2e4a55ac0d3a9c9ad49a0ab52105c276863161b
   wordpress-cluster
     git: git://github.com/adamkrone/chef-wordpress-cluster.git
-    revision: 203495798cb6ce6d8642bc4039dd48f127cebaca
+    revision: e5cc3e7ccb7cc534be3fb5c21e370ac650bf35fd
 
 GRAPH
   7-zip (1.0.2)
@@ -63,9 +63,7 @@ GRAPH
     git (>= 0.0.0)
     ssh-import-id (>= 0.0.0)
     unzip (>= 0.0.0)
-    varnish (>= 0.0.0)
     wordpress-cluster (>= 0.0.0)
-    wp-cli (>= 0.0.0)
   build-essential (2.1.3)
   capistrano-base (0.3.0)
     apache2 (~> 3.0)
@@ -205,6 +203,8 @@ GRAPH
     lsyncd (>= 0.0.0)
     ssh-import-id (>= 0.0.0)
     unzip (>= 0.0.0)
+    varnish (>= 0.0.0)
+    wp-cli (>= 0.0.0)
     yum (>= 0.0.0)
   wp-cli (0.1.3)
   xfs (1.1.0)

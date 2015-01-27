@@ -20,5 +20,3 @@ wordpress_cluster_lb '100' do
   consul_acl_token consul_acl['token']
   datacenter 'vagrant'
 end
-
-include_recipe 'bedrock::varnish'
