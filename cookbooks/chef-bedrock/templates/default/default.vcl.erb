@@ -41,11 +41,6 @@ sub vcl_recv {
 sub vcl_fetch {
   if ( (!(req.url ~ "(wp-(login|admin)|login)")) || (req.request == "GET") ) {
     unset beresp.http.set-cookie;
-    set beresp.ttl = 1m;
-  }
-
-  if (req.url ~ "\.(gif|jpg|jpeg|swf|css|js|flv|mp3|mp4|pdf|ico|png)(\?.*|)$") {
-    set beresp.ttl = 365d;
   }
 }
 

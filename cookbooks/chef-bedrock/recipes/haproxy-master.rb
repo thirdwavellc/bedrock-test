@@ -7,12 +7,6 @@
 #
 #
 
-node.normal['varnish']['version'] = '3.0.5'
-node.normal['varnish']['listen_port'] = 80
-node.normal['varnish']['vcl_cookbook'] = 'bedrock'
-
-include_recipe 'varnish::default'
-
 keepalived = Chef::DataBagItem.load('keepalived', 'auth')
 consul_acl = Chef::DataBagItem.load('consul', 'acl')
 
@@ -26,3 +20,5 @@ wordpress_cluster_lb '101' do
   consul_acl_token consul_acl['token']
   datacenter 'vagrant'
 end
+
+include_recipe 'bedrock::varnish'

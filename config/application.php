@@ -55,7 +55,6 @@ define('NONCE_SALT',       getenv('NONCE_SALT'));
 define('AUTOMATIC_UPDATER_DISABLED', true);
 define('DISABLE_WP_CRON', true);
 define('DISALLOW_FILE_EDIT', true);
-define('VHP_VARNISH_IP', '172.20.10.10');
 
 /**
  * Bootstrap WordPress
