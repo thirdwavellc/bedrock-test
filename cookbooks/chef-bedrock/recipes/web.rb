@@ -32,3 +32,5 @@ wordpress_cluster_app 'bedrock' do
   csync2_key csync2['key']
   lsyncd_watched_dirs ['/var/www/bedrock/shared/web/app/uploads']
 end
+
+include_recipe 'wp-cli::default'
