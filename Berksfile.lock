@@ -41,7 +41,7 @@ DEPENDENCIES
     revision: d2e4a55ac0d3a9c9ad49a0ab52105c276863161b
   wordpress-cluster
     git: git://github.com/adamkrone/chef-wordpress-cluster.git
-    revision: e5cc3e7ccb7cc534be3fb5c21e370ac650bf35fd
+    revision: 166158d5251eb8cb6f7661d239dc6f4228b322ac
 
 GRAPH
   7-zip (1.0.2)
