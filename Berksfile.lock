@@ -12,16 +12,16 @@ DEPENDENCIES
     revision: 72bd5e3507056e5c931ee0cf7516ce1bfbce6d51
   consul
     git: git://github.com/johnbellone/consul-cookbook.git
-    revision: df4891d56b8252fad50056eb29cdabfe15c68493
+    revision: a0d5a8b56f55d9caef1ddded2fa95bfeffe28a6c
   consul-cluster
     git: git://github.com/adamkrone/chef-consul-cluster.git
     revision: 6628ea21c0fd97c0bb0cb0e2d8994e417c9e06de
   consul-services
     git: git://github.com/adamkrone/chef-consul-services.git
-    revision: 41bee3919531e88a391268d74cf780543d810430
+    revision: c290d5bc84cf332d6995d9cb7c4b06ea1803b144
   consul-template
     git: git://github.com/adamkrone/chef-consul-template.git
-    revision: cdd4fadec8a67cd7163f05584d59e21daade6899
+    revision: 4e583920d227ac70fdf8e2ce11d90b6a21dc8bbf
   consul-watches
     git: git://github.com/adamkrone/chef-consul-watches.git
     revision: 746f856c0c138c6702e672ed776bd53bcc3877a7
@@ -41,7 +41,7 @@ DEPENDENCIES
     revision: d2e4a55ac0d3a9c9ad49a0ab52105c276863161b
   wordpress-cluster
     git: git://github.com/adamkrone/chef-wordpress-cluster.git
-    revision: 853307a78f227005b7831f3e3e3d89640b1b277f
+    revision: 166158d5251eb8cb6f7661d239dc6f4228b322ac
 
 GRAPH
   7-zip (1.0.2)
@@ -56,6 +56,7 @@ GRAPH
   aws (2.5.0)
   bedrock (0.1.0)
     apt (>= 0.0.0)
+    chef-solo-search (>= 0.0.0)
     consul (>= 0.0.0)
     consul-services (>= 0.0.0)
     consul-template (>= 0.0.0)
@@ -83,15 +84,18 @@ GRAPH
     ssh-hardening (>= 0.0.0)
     sudo (>= 0.0.0)
     users (>= 0.0.0)
+  chef-provisioning (0.1.2)
+    build-essential (>= 0.0.0)
   chef-solo-search (0.5.2)
   chef-sugar (2.5.0)
   chef_handler (1.1.6)
   composer (2.0.0)
     php (>= 0.0.0)
     windows (>= 0.0.0)
-  consul (0.6.0)
+  consul (0.7.1)
     ark (>= 0.0.0)
-    golang (~> 1.4.0)
+    chef-provisioning (>= 0.0.0)
+    golang (~> 1.4)
     runit (>= 0.0.0)
     yum-repoforge (>= 0.0.0)
   consul-cluster (0.1.0)
@@ -100,7 +104,7 @@ GRAPH
   consul-services (0.2.0)
     consul (>= 0.0.0)
     curl (>= 0.0.0)
-  consul-template (0.5.1)
+  consul-template (0.6.0)
     ark (>= 0.0.0)
     golang (~> 1.4.0)
     runit (>= 0.0.0)
@@ -177,6 +181,11 @@ GRAPH
   sudo (2.7.1)
   unzip (0.0.1)
   users (1.7.0)
+  varnish (1.0.2)
+    apt (~> 2.4)
+    build-essential (>= 0.0.0)
+    yum (~> 3.0)
+    yum-epel (>= 0.0.0)
   windows (1.36.1)
     chef_handler (>= 0.0.0)
   wordpress-cluster (0.1.0)
@@ -194,7 +203,10 @@ GRAPH
     lsyncd (>= 0.0.0)
     ssh-import-id (>= 0.0.0)
     unzip (>= 0.0.0)
+    varnish (>= 0.0.0)
+    wp-cli (>= 0.0.0)
     yum (>= 0.0.0)
+  wp-cli (0.1.3)
   xfs (1.1.0)
   xml (1.2.9)
     build-essential (>= 0.0.0)

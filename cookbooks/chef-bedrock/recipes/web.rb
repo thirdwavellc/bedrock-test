@@ -19,8 +19,8 @@ wordpress_cluster_app 'bedrock' do
   consul_acl_token consul_acl['token']
   datacenter 'vagrant'
   csync2_hosts [
-    {name: 'web01', ip_address: '192.168.33.11'},
-    {name: 'web02', ip_address: '192.168.33.12'}
+    {name: 'web01', ip_address: '172.20.10.11'},
+    {name: 'web02', ip_address: '172.20.10.12'}
   ]
   csync2_key csync2['key']
   lsyncd_watched_dirs ['/var/www/bedrock/shared/web/app/uploads']
