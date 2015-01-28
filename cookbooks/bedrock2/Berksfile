@@ -1,0 +1,10 @@
+source "https://api.berkshelf.com"
+
+metadata
+
+cookbook 'chef-solo-search', github: 'edelight/chef-solo-search'
+cookbook 'git'
+cookbook 'ssh-import-id', github: 'adamkrone/chef-ssh-import-id'
+cookbook 'capistrano-base', path: 'adamkrone/chef-capistrano-base'
+cookbook 'capistrano-wordpress', path: 'adamkrone/chef-capistrano-wordpress'
+cookbook 'consul-template', github: 'adamkrone/chef-consul-template'

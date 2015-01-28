@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: bedrock
-# Recipe:: haproxy-backup
+# Cookbook Name:: wordpress-cluster1
+# Recipe:: haproxy-master
 #
 # Copyright (C) 2014
 #
@@ -10,8 +10,8 @@
 keepalived = Chef::DataBagItem.load('keepalived', 'auth')
 consul_acl = Chef::DataBagItem.load('consul', 'acl')
 
-wordpress_cluster_lb '100' do
-  keepalived_state 'BACKUP'
+wordpress_cluster_lb '101' do
+  keepalived_state 'MASTER'
   keepalived_virtual_ip '172.20.10.10'
   keepalived_interface 'eth1'
   keepalived_auth_pass keepalived['password']
@@ -19,5 +19,6 @@ wordpress_cluster_lb '100' do
   consul_acl_datacenter 'vagrant'
   consul_acl_token consul_acl['token']
   datacenter 'vagrant'
-  sites [{ name: 'bedrock', host: 'bedrock.stg', service: 'varnish'}]
+  sites [{ name: 'bedrock1', host: 'bedrock1.stg', service: 'varnish'},
+         { name: 'bedrock2', host: 'bedrock2.stg', service: 'varnish'}]
 end
