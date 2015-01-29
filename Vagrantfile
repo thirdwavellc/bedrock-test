@@ -5,6 +5,7 @@
 VAGRANTFILE_API_VERSION = '2'
 
 NUMBER_WEB_SERVERS = 2
+NUMBER_DB_SERVERS = 3
 NUMBER_LOAD_BALANCERS = 2
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -42,18 +43,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.define 'db' do |db|
-    db.vm.hostname = 'db.wp01.stg'
-    db.vm.network 'private_network', ip: '172.20.10.20'
+  1.upto(NUMBER_DB_SERVERS).each do |num|
+    config.vm.define "db0#{num}" do |db|
+      db.vm.hostname = "db0#{num}.wp01.stg"
+      db.vm.network 'private_network', ip: "172.20.10.#{20 + num}"
 
-    db.vm.provider 'virtualbox' do |vb|
-      vb.memory = 2048
-      vb.cpus = 2
-    end
+      db.vm.provider 'virtualbox' do |vb|
+        vb.memory = 2048
+        vb.cpus = 2
+      end
 
-    db.vm.provision 'chef_solo' do |chef|
-      chef.data_bags_path = 'data_bags'
-      chef.add_recipe 'wordpress-cluster1::db'
+      db.vm.provision 'chef_solo' do |chef|
+        chef.data_bags_path = 'data_bags'
+        chef.add_recipe 'wordpress-cluster1::db'
+      end
     end
   end
 
