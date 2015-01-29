@@ -40,7 +40,7 @@ DEPENDENCIES
     revision: d2e4a55ac0d3a9c9ad49a0ab52105c276863161b
   wordpress-cluster
     git: git://github.com/adamkrone/chef-wordpress-cluster.git
-    revision: bddfdf61295abfffa434248a68905f53260c0f16
+    revision: b59ca9390ab0242122ec4b977dcb958797cdb96c
   wordpress-cluster1
     path: cookbooks/wordpress-cluster1
 
