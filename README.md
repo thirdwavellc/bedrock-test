@@ -59,12 +59,10 @@ Upon creation, a token should be generated for the entry we just added. You
 will need to copy this, and paste it into a few places, replacing the example
 values currently in the repo.
 
-terraform/consul.tf in two places:
-	resource "consul_keys" "bedrock" {
-		token  = "3a6efcc8-b0e5-93e8-9188-b7cda829b929" # change me
-
-	resource "consul_keys" "haproxy" {
-		token  = "3a6efcc8-b0e5-93e8-9188-b7cda829b929" # change me
+terraform/consul.tf in one places:
+  variable "consul_acl_token" {
+    default = "3a6efcc8-b0e5-93e8-9188-b7cda829b929" # change me
+  }
 
 data_bags/consul/acl.json in one place:
 
@@ -123,7 +121,12 @@ the first place, please refer to
 
 To start the staging environment:
 
-	vagrant up staging-web staging-db
+	vagrant up
+
+This will also start the dev machine, but it's easier than typing in what is
+necessary to start everything but the dev machine:
+
+  vagrant up web0{1,2} db lb0{1,2}
 
 ##### Deployment
 
@@ -132,9 +135,15 @@ have ruby installed, and install the dependencies:
 
 	bundle install
 
-A staging Capistrano stage has been added for deployment using Capistrano:
+Two Capistrano stages have been added for deployment using Capistrano:
 
-	bundle exec cap staging deploy
+	bundle exec cap bedrock1 deploy
+	bundle exec cap bedrock2 deploy
+
+These correspond to the two apps we're deploying, in order to simulate a
+multi-tenant environment. It's actually deploying the same app, but they each
+have their own directory/db, so they should operate separately.
 
 When this completes, it should be accessible at
-[bedrock.stg](http://bedrock.stg)
+[bedrock1.stg](http://bedrock1.stg) and
+[bedrock2.stg](http://bedrock2.stg)
