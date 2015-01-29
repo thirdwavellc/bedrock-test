@@ -13,20 +13,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.omnibus.chef_version = :latest
 
   config.vm.define 'dev' do |dev|
-    dev.vm.hostname = 'bedrock.dev'
+    dev.vm.hostname = 'bedrock1.dev'
     dev.vm.network 'private_network', ip: '172.20.10.9'
-    dev.vm.synced_folder './', '/var/www/bedrock/current'
+    dev.vm.synced_folder './', '/var/www/bedrock1/current'
 
     dev.vm.provision 'chef_solo' do |chef|
       chef.data_bags_path = 'data_bags'
       chef.add_recipe 'chef-solo-search::default'
-      chef.add_recipe 'bedrock::development'
+      chef.add_recipe 'bedrock1::development'
     end
   end
 
   1.upto(NUMBER_WEB_SERVERS).each do |num|
-    config.vm.define "staging-web-0#{num}" do |web|
-      web.vm.hostname = "web0#{num}.bedrock.stg"
+    config.vm.define "web0#{num}" do |web|
+      web.vm.hostname = "web0#{num}.wp01.stg"
       web.vm.network 'private_network', ip: "172.20.10.#{10 + num}"
 
       web.vm.provider 'virtualbox' do |vb|
@@ -37,13 +37,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       web.vm.provision 'chef_solo' do |chef|
         chef.data_bags_path = 'data_bags'
         chef.add_recipe 'chef-solo-search::default'
-        chef.add_recipe 'bedrock::web'
+        chef.add_recipe 'wordpress-cluster1::web'
       end
     end
   end
 
-  config.vm.define 'staging-db' do |db|
-    db.vm.hostname = 'db.bedrock.stg'
+  config.vm.define 'db' do |db|
+    db.vm.hostname = 'db.wp01.stg'
     db.vm.network 'private_network', ip: '172.20.10.20'
 
     db.vm.provider 'virtualbox' do |vb|
@@ -53,13 +53,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     db.vm.provision 'chef_solo' do |chef|
       chef.data_bags_path = 'data_bags'
-      chef.add_recipe 'bedrock::db'
+      chef.add_recipe 'wordpress-cluster1::db'
     end
   end
 
   1.upto(NUMBER_LOAD_BALANCERS).each do |num|
-    config.vm.define "staging-lb-0#{num}" do |lb|
-      lb.vm.hostname = "lb0#{num}.bedrock.stg"
+    config.vm.define "lb0#{num}" do |lb|
+      lb.vm.hostname = "lb0#{num}.wp01.stg"
       lb.vm.network 'private_network', ip: "172.20.10.#{100 + num}"
 
       lb.vm.provider 'virtualbox' do |vb|
@@ -70,9 +70,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       lb.vm.provision 'chef_solo' do |chef|
         chef.data_bags_path = 'data_bags'
         if num == 1
-          chef.add_recipe 'bedrock::haproxy-master'
+          chef.add_recipe 'wordpress-cluster1::haproxy-master'
         else
-          chef.add_recipe 'bedrock::haproxy-backup'
+          chef.add_recipe 'wordpress-cluster1::haproxy-backup'
         end
       end
     end

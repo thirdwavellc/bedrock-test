@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: bedrock
+# Cookbook Name:: bedrock2
 # Recipe:: development
 #
 # Copyright (C) 2014
@@ -7,17 +7,17 @@
 #
 #
 
-wordpress_cluster_app 'bedrock' do
+wordpress_cluster_app 'bedrock2' do
   deployment_user 'vagrant'
   deployment_group 'vagrant'
-  server_name 'bedrock.dev'
+  server_name 'bedrock2.dev'
   development true
 end
 
 wordpress_cluster_db 'development' do
-  app_name 'bedrock'
-  user 'bedrock'
-  user_password 'bedrock'
+  app_name 'bedrock2'
+  user 'bedrock2'
+  user_password 'bedrock2'
   mysql_root_password node['mysql']['server_root_password']
   development true
 end
