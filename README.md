@@ -21,7 +21,7 @@ We are using consul for monitoring, as well as template generation using
 The staging environment requires a cluster of consul servers. We have setup a
 simple vagrant configuration that will handle this for you, which you can find
 on github:
-[vagrant-consul-cluster](https://github.com/adamkrone/vagrant-consul-cluster).
+[vagrant-consul-cluster](https://github.com/thirdwavellc/vagrant-consul-cluster).
 
 Simply clone the repo, cd into its directory, and run:
 
