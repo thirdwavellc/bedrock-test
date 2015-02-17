@@ -14,7 +14,7 @@ DEPENDENCIES
     revision: 72bd5e3507056e5c931ee0cf7516ce1bfbce6d51
   consul
     git: git://github.com/johnbellone/consul-cookbook.git
-    revision: a0d5a8b56f55d9caef1ddded2fa95bfeffe28a6c
+    revision: 52f6669a0ad3e03bd0de15bd79ef61c4ae935665
   consul-cluster
     git: git://github.com/adamkrone/chef-consul-cluster.git
     revision: 6628ea21c0fd97c0bb0cb0e2d8994e417c9e06de
@@ -32,6 +32,12 @@ DEPENDENCIES
   lsyncd
     git: git://github.com/adamkrone/chef-lsyncd.git
     revision: 0963a3aa9bde474378d213a7870c881c96561ae5
+  mysql-cluster
+    git: git://github.com/adamkrone/chef-mysql-cluster.git
+    revision: 1c1dcff905d1712fc21713cd04e89d3a60cebd97
+  percona
+    git: git://github.com/phlipper/chef-percona.git
+    revision: 0666754756e9494ac2598d82a67fda6cf42aa8bd
   ssh-import-id
     git: git://github.com/adamkrone/chef-ssh-import-id.git
     revision: 402b6b1b5aba26f452347ccc90fec4c1530e87db
@@ -40,7 +46,8 @@ DEPENDENCIES
     revision: d2e4a55ac0d3a9c9ad49a0ab52105c276863161b
   wordpress-cluster
     git: git://github.com/adamkrone/chef-wordpress-cluster.git
-    revision: b59ca9390ab0242122ec4b977dcb958797cdb96c
+    revision: 27325bb4e6c80705e885d68850cf7f44a068895e
+    branch: percona
   wordpress-cluster1
     path: cookbooks/wordpress-cluster1
 
@@ -159,6 +166,9 @@ GRAPH
   mysql-chef_gem (0.0.5)
     build-essential (>= 0.0.0)
     mysql (>= 0.0.0)
+  mysql-cluster (0.1.0)
+    apt (>= 0.0.0)
+    percona (>= 0.0.0)
   nodejs (2.2.0)
     apt (>= 0.0.0)
     ark (>= 0.0.0)
@@ -166,6 +176,12 @@ GRAPH
     yum-epel (>= 0.0.0)
   openssl (2.0.2)
     chef-sugar (>= 0.0.0)
+  percona (0.15.5)
+    apt (>= 1.9.0)
+    build-essential (>= 0.0.0)
+    openssl (>= 0.0.0)
+    yum (~> 3.0)
+    yum-epel (>= 0.0.0)
   php (1.5.0)
     build-essential (>= 0.0.0)
     iis (>= 0.0.0)
@@ -219,6 +235,7 @@ GRAPH
     bedrock1 (>= 0.0.0)
     csync2 (>= 0.0.0)
     lsyncd (>= 0.0.0)
+    mysql-cluster (>= 0.0.0)
   wp-cli (0.1.4)
   xfs (1.1.0)
   xml (1.2.9)
