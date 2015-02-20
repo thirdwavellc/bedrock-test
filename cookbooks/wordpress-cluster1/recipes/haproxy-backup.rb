@@ -19,6 +19,7 @@ wordpress_cluster_lb '100' do
   consul_acl_datacenter 'vagrant'
   consul_acl_token consul_acl['token']
   datacenter 'vagrant'
-  sites [{ name: 'bedrock1', host: 'bedrock1.stg', service: 'varnish'},
+  sites [{ name: 'consul', host: 'consul.stg', service: 'consul-ui'},
+         { name: 'bedrock1', host: 'bedrock1.stg', service: 'varnish'},
          { name: 'bedrock2', host: 'bedrock2.stg', service: 'varnish'}]
 end
