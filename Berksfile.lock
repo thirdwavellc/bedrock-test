@@ -240,6 +240,7 @@ GRAPH
     yum (>= 0.0.0)
   wordpress-cluster1 (0.1.0)
     bedrock1 (>= 0.0.0)
+    bedrock2 (>= 0.0.0)
     csync2 (>= 0.0.0)
     lsyncd (>= 0.0.0)
     mysql-cluster (>= 0.0.0)

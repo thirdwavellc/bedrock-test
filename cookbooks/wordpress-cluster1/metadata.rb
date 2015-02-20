@@ -7,6 +7,7 @@ long_description 'Installs/Configures wordpress-cluster1'
 version          '0.1.0'
 
 depends 'bedrock1'
+depends 'bedrock2'
 depends 'csync2'
 depends 'lsyncd'
 depends 'mysql-cluster'
