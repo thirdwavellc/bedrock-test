@@ -8,7 +8,7 @@ DEPENDENCIES
     revision: 6aec3d67c6b87d4e6a2288db6e7f78542c13c8ab
   capistrano-wordpress
     git: git://github.com/thirdwavellc/chef-capistrano-wordpress.git
-    revision: 33063a5086b510e59206b4df4bbbe5e23b3bd616
+    revision: 7d1b9295d9e6918c907329add571f57775c61c4a
   chef-solo-search
     git: git://github.com/edelight/chef-solo-search.git
     revision: 72bd5e3507056e5c931ee0cf7516ce1bfbce6d51
@@ -49,7 +49,7 @@ DEPENDENCIES
     revision: d2e4a55ac0d3a9c9ad49a0ab52105c276863161b
   wordpress-cluster
     git: git://github.com/thirdwavellc/chef-wordpress-cluster.git
-    revision: 23fcde7637cd39d8324e25ce82c00e67a82584fc
+    revision: af4d8d6e210a9b04422d5089d4f3a92c76bdb07d
   wordpress-cluster1
     path: cookbooks/wordpress-cluster1
 
