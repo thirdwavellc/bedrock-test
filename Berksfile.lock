@@ -8,19 +8,22 @@ DEPENDENCIES
     revision: 6aec3d67c6b87d4e6a2288db6e7f78542c13c8ab
   capistrano-wordpress
     git: git://github.com/thirdwavellc/chef-capistrano-wordpress.git
-    revision: 2a11d6135952bf2a73109b4ebff5dac10d6904ef
+    revision: 33063a5086b510e59206b4df4bbbe5e23b3bd616
   chef-solo-search
     git: git://github.com/edelight/chef-solo-search.git
     revision: 72bd5e3507056e5c931ee0cf7516ce1bfbce6d51
   consul
     git: git://github.com/johnbellone/consul-cookbook.git
     revision: db93cb69f095b9300d4e530257151abfaef273d4
+  consul-alerts
+    git: git://github.com/adamkrone/chef-consul-alerts.git
+    revision: 110b4e3d17cd48c99447e04c4df83ba0767af710
   consul-cluster
     git: git://github.com/thirdwavellc/chef-consul-cluster.git
-    revision: 598726aa573fae7889dc279860a4d1fe0b96a2d6
+    revision: ff58ac44da9e2058c019e6da880314fefdada227
   consul-services
     git: git://github.com/thirdwavellc/chef-consul-services.git
-    revision: 554ff8ed76e52a117819fc830caed4c3775be7ce
+    revision: 376be5af0a933590f5f78a68b3777bdd80ad50d0
   consul-template
     git: git://github.com/adamkrone/chef-consul-template.git
     revision: 594888ce140d544b6c2573cae3355203d45f9402
@@ -34,7 +37,7 @@ DEPENDENCIES
     revision: 3b80956ed578cf0f35f51350c66a7d5a353ca565
   mysql-cluster
     git: git://github.com/thirdwavellc/chef-mysql-cluster.git
-    revision: ea32c86953576e911e86b1e104519a81d615929c
+    revision: a8a2d97a37be76a9634b7aec27cbf29b9e71ca7a
   percona
     git: git://github.com/phlipper/chef-percona.git
     revision: 0666754756e9494ac2598d82a67fda6cf42aa8bd
@@ -46,8 +49,7 @@ DEPENDENCIES
     revision: d2e4a55ac0d3a9c9ad49a0ab52105c276863161b
   wordpress-cluster
     git: git://github.com/thirdwavellc/chef-wordpress-cluster.git
-    revision: 412369ce204263db8eb1748488eb5f13970ecaaa
-    branch: percona
+    revision: 23fcde7637cd39d8324e25ce82c00e67a82584fc
   wordpress-cluster1
     path: cookbooks/wordpress-cluster1
 
@@ -61,7 +63,7 @@ GRAPH
   ark (0.9.0)
     7-zip (>= 0.0.0)
     windows (>= 0.0.0)
-  aws (2.6.0)
+  aws (2.6.4)
   bedrock1 (0.1.0)
     apt (>= 0.0.0)
     chef-solo-search (>= 0.0.0)
@@ -116,8 +118,10 @@ GRAPH
     libarchive (>= 0.0.0)
     runit (>= 0.0.0)
     yum-repoforge (>= 0.0.0)
+  consul-alerts (0.1.0)
   consul-cluster (0.1.0)
     consul (>= 0.0.0)
+    consul-alerts (>= 0.0.0)
     consul-services (>= 0.0.0)
   consul-services (0.2.0)
     consul (>= 0.0.0)
@@ -177,7 +181,7 @@ GRAPH
     ark (>= 0.0.0)
     build-essential (>= 0.0.0)
     yum-epel (>= 0.0.0)
-  openssl (2.0.2)
+  openssl (4.0.0)
     chef-sugar (>= 0.0.0)
   percona (0.15.5)
     apt (>= 1.9.0)
@@ -214,7 +218,7 @@ GRAPH
     build-essential (>= 0.0.0)
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
-  windows (1.36.1)
+  windows (1.36.6)
     chef_handler (>= 0.0.0)
   wordpress-cluster (0.1.0)
     apt (>= 0.0.0)
@@ -241,10 +245,10 @@ GRAPH
     mysql-cluster (>= 0.0.0)
   wp-cli (0.1.4)
   xfs (1.1.0)
-  xml (1.2.9)
+  xml (1.2.13)
     build-essential (>= 0.0.0)
     chef-sugar (>= 0.0.0)
-  yum (3.5.2)
+  yum (3.5.3)
   yum-epel (0.6.0)
     yum (~> 3.0)
   yum-mysql-community (0.1.13)
