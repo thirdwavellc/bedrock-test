@@ -5,10 +5,10 @@ DEPENDENCIES
     path: cookbooks/bedrock2
   capistrano-base
     git: git://github.com/thirdwavellc/chef-capistrano-base.git
-    revision: 6aec3d67c6b87d4e6a2288db6e7f78542c13c8ab
+    revision: a7fc7792c618f3abf7b348fb5e33ffccc6272ace
   capistrano-wordpress
     git: git://github.com/thirdwavellc/chef-capistrano-wordpress.git
-    revision: 7d1b9295d9e6918c907329add571f57775c61c4a
+    revision: 04e52b8482f2471caa51f73d0c3618ca73dcbecf
   chef-solo-search
     git: git://github.com/edelight/chef-solo-search.git
     revision: 72bd5e3507056e5c931ee0cf7516ce1bfbce6d51
@@ -23,7 +23,7 @@ DEPENDENCIES
     revision: ff58ac44da9e2058c019e6da880314fefdada227
   consul-services
     git: git://github.com/thirdwavellc/chef-consul-services.git
-    revision: 376be5af0a933590f5f78a68b3777bdd80ad50d0
+    revision: 896041da58ad19ddfba9e3f91f6d1bd9c9e9e50e
   consul-template
     git: git://github.com/adamkrone/chef-consul-template.git
     revision: 594888ce140d544b6c2573cae3355203d45f9402
@@ -49,7 +49,7 @@ DEPENDENCIES
     revision: d2e4a55ac0d3a9c9ad49a0ab52105c276863161b
   wordpress-cluster
     git: git://github.com/thirdwavellc/chef-wordpress-cluster.git
-    revision: af4d8d6e210a9b04422d5089d4f3a92c76bdb07d
+    revision: 751fc56032a08a254ee33d1b0d81b1f7b97f5f39
   wordpress-cluster1
     path: cookbooks/wordpress-cluster1
 
@@ -196,10 +196,10 @@ GRAPH
     windows (>= 0.0.0)
     xml (>= 0.0.0)
     yum-epel (>= 0.0.0)
-  postgresql (3.4.16)
+  postgresql (3.4.18)
     apt (>= 1.9.0)
     build-essential (>= 0.0.0)
-    openssl (>= 0.0.0)
+    openssl (~> 4.0.0)
   python (1.4.6)
     build-essential (>= 0.0.0)
     yum-epel (>= 0.0.0)

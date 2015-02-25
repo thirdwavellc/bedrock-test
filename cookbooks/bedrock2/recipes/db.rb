@@ -9,8 +9,7 @@
 
 mysql = Chef::DataBagItem.load('mysql', 'root')
 
-wordpress_cluster_db 'production' do
-  app_name 'bedrock2'
+wordpress_cluster_database 'bedrock2_production' do
   user 'bedrock2'
   user_host '%'
   user_password 'bedrock2'

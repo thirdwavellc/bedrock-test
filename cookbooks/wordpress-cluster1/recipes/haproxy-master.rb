@@ -10,8 +10,8 @@
 keepalived = Chef::DataBagItem.load('keepalived', 'auth')
 consul_acl = Chef::DataBagItem.load('consul', 'acl')
 
-wordpress_cluster_lb '101' do
-  keepalived_state 'MASTER'
+wordpress_cluster_lb 'MASTER' do
+  keepalived_priority '101'
   keepalived_virtual_ip '172.20.10.10'
   keepalived_interface 'eth1'
   keepalived_auth_pass keepalived['password']
