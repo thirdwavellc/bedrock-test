@@ -14,7 +14,7 @@ DEPENDENCIES
     revision: 72bd5e3507056e5c931ee0cf7516ce1bfbce6d51
   consul
     git: git://github.com/johnbellone/consul-cookbook.git
-    revision: db93cb69f095b9300d4e530257151abfaef273d4
+    revision: 60e3072a3db35657747a608c83b2209e0101f23b
   consul-alerts
     git: git://github.com/adamkrone/chef-consul-alerts.git
     revision: 110b4e3d17cd48c99447e04c4df83ba0767af710
@@ -49,7 +49,7 @@ DEPENDENCIES
     revision: d2e4a55ac0d3a9c9ad49a0ab52105c276863161b
   wordpress-cluster
     git: git://github.com/thirdwavellc/chef-wordpress-cluster.git
-    revision: f96fe962eb156804b0b038c05c076df230b2c0a1
+    revision: 9e9b36e7a9fcf1f4b12f2f558c70af04b1d1d480
   wordpress-cluster1
     path: cookbooks/wordpress-cluster1
 
