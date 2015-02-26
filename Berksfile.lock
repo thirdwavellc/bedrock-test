@@ -5,10 +5,10 @@ DEPENDENCIES
     path: cookbooks/bedrock2
   capistrano-base
     git: git://github.com/thirdwavellc/chef-capistrano-base.git
-    revision: a7fc7792c618f3abf7b348fb5e33ffccc6272ace
+    revision: 2374a149cfd638f67d3b1867574540def2c58fea
   capistrano-wordpress
     git: git://github.com/thirdwavellc/chef-capistrano-wordpress.git
-    revision: 04e52b8482f2471caa51f73d0c3618ca73dcbecf
+    revision: eaff0247d0307eacdf6a9d1a2f58f7dbafea94e7
   chef-solo-search
     git: git://github.com/edelight/chef-solo-search.git
     revision: 72bd5e3507056e5c931ee0cf7516ce1bfbce6d51
@@ -49,7 +49,7 @@ DEPENDENCIES
     revision: d2e4a55ac0d3a9c9ad49a0ab52105c276863161b
   wordpress-cluster
     git: git://github.com/thirdwavellc/chef-wordpress-cluster.git
-    revision: 751fc56032a08a254ee33d1b0d81b1f7b97f5f39
+    revision: f96fe962eb156804b0b038c05c076df230b2c0a1
   wordpress-cluster1
     path: cookbooks/wordpress-cluster1
 
