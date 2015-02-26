@@ -44,9 +44,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   1.upto(NUMBER_DB_SERVERS).each do |num|
+    ip_address = "172.20.10.#{20 + num}"
     config.vm.define "db0#{num}" do |db|
       db.vm.hostname = "db0#{num}.wp01.stg"
-      db.vm.network 'private_network', ip: "172.20.10.#{20 + num}"
+      db.vm.network 'private_network', ip: ip_address
 
       db.vm.provider 'virtualbox' do |vb|
         vb.memory = 2048
@@ -56,6 +57,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       db.vm.provision 'chef_solo' do |chef|
         chef.data_bags_path = 'data_bags'
         chef.add_recipe 'wordpress-cluster1::db'
+
+        chef.json = {
+          percona: {
+            server: {
+              bind_address: ip_address
+            }
+          }
+        }
       end
     end
   end
