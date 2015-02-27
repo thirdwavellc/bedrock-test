@@ -5,10 +5,12 @@ DEPENDENCIES
     path: cookbooks/bedrock2
   capistrano-base
     git: git://github.com/thirdwavellc/chef-capistrano-base.git
-    revision: 2374a149cfd638f67d3b1867574540def2c58fea
+    revision: 0207c00b3f62ad332ca499b7aa04cf5927609b32
+    tag: v1.0.0
   capistrano-wordpress
     git: git://github.com/thirdwavellc/chef-capistrano-wordpress.git
-    revision: eaff0247d0307eacdf6a9d1a2f58f7dbafea94e7
+    revision: c19d2e54fd412d0487bd0b0fc7b943cf9d61791c
+    tag: v1.0.0
   chef-solo-search
     git: git://github.com/edelight/chef-solo-search.git
     revision: 72bd5e3507056e5c931ee0cf7516ce1bfbce6d51
@@ -49,7 +51,8 @@ DEPENDENCIES
     revision: d2e4a55ac0d3a9c9ad49a0ab52105c276863161b
   wordpress-cluster
     git: git://github.com/thirdwavellc/chef-wordpress-cluster.git
-    revision: 9e9b36e7a9fcf1f4b12f2f558c70af04b1d1d480
+    revision: 0a12b98d42576fc0b82d797ea1d2f447ac730655
+    tag: v1.0.0
   wordpress-cluster1
     path: cookbooks/wordpress-cluster1
 
@@ -85,7 +88,7 @@ GRAPH
     unzip (>= 0.0.0)
     wordpress-cluster (>= 0.0.0)
   build-essential (2.1.3)
-  capistrano-base (0.3.0)
+  capistrano-base (1.0.0)
     apache2 (~> 3.0)
     apt (>= 0.0.0)
     database (~> 2.3.1)
@@ -94,7 +97,7 @@ GRAPH
     ssh-hardening (= 1.0.2)
     sudo (>= 0.0.0)
     users (>= 0.0.0)
-  capistrano-wordpress (0.3.0)
+  capistrano-wordpress (1.0.0)
     apache2 (>= 0.0.0)
     apt (>= 0.0.0)
     capistrano-base (>= 0.0.0)
@@ -220,7 +223,7 @@ GRAPH
     yum-epel (>= 0.0.0)
   windows (1.36.6)
     chef_handler (>= 0.0.0)
-  wordpress-cluster (0.1.0)
+  wordpress-cluster (1.0.0)
     apt (>= 0.0.0)
     capistrano-wordpress (>= 0.0.0)
     consul (>= 0.0.0)
