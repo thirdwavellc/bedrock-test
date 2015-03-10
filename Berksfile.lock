@@ -28,7 +28,7 @@ DEPENDENCIES
     revision: 896041da58ad19ddfba9e3f91f6d1bd9c9e9e50e
   consul-template
     git: git://github.com/adamkrone/chef-consul-template.git
-    revision: 594888ce140d544b6c2573cae3355203d45f9402
+    revision: adda5d8c691b1f7ad62ec8616eff1815ca58d575
   csync2
     git: git://github.com/thirdwavellc/chef-csync2.git
     revision: 9d9b0a1464c8557c811c1363c588898fe0d6e8de
@@ -42,7 +42,7 @@ DEPENDENCIES
     revision: a8a2d97a37be76a9634b7aec27cbf29b9e71ca7a
   percona
     git: git://github.com/phlipper/chef-percona.git
-    revision: 0666754756e9494ac2598d82a67fda6cf42aa8bd
+    revision: c730711f525a4e43c9b4f034f38cc647dfed5c47
   ssh-import-id
     git: git://github.com/adamkrone/chef-ssh-import-id.git
     revision: 402b6b1b5aba26f452347ccc90fec4c1530e87db
@@ -51,8 +51,8 @@ DEPENDENCIES
     revision: d2e4a55ac0d3a9c9ad49a0ab52105c276863161b
   wordpress-cluster
     git: git://github.com/thirdwavellc/chef-wordpress-cluster.git
-    revision: 0a12b98d42576fc0b82d797ea1d2f447ac730655
-    tag: v1.0.0
+    revision: d90afc31e3455aef44b5ee90d8e269b009039c0a
+    tag: v1.1.0
   wordpress-cluster1
     path: cookbooks/wordpress-cluster1
 
@@ -111,6 +111,7 @@ GRAPH
     build-essential (>= 0.0.0)
   chef-solo-search (0.5.2)
   chef-sugar (2.5.0)
+  chef-vault (1.2.4)
   chef_handler (1.1.6)
   composer (2.0.0)
     php (>= 0.0.0)
@@ -158,14 +159,14 @@ GRAPH
   hg (0.1.2)
     mercurial (>= 0.0.0)
   hostsfile (2.4.5)
-  iis (4.0.0)
+  iis (4.1.0)
     windows (>= 1.34.6)
   iptables (0.14.1)
   keepalived (1.2.0)
   libarchive (0.4.1)
     apt (~> 2.5)
     build-essential (~> 2.0)
-  logrotate (1.8.0)
+  logrotate (1.9.0)
   lsyncd (0.1.0)
   mercurial (2.0.4)
     build-essential (>= 0.0.0)
@@ -189,6 +190,7 @@ GRAPH
   percona (0.15.5)
     apt (>= 1.9.0)
     build-essential (>= 0.0.0)
+    chef-vault (>= 0.0.0)
     openssl (>= 0.0.0)
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
@@ -215,7 +217,7 @@ GRAPH
     apt (>= 0.0.0)
   sudo (2.7.1)
   unzip (0.0.1)
-  users (1.7.0)
+  users (1.8.0)
   varnish (2.0.0)
     apt (~> 2.4)
     build-essential (>= 0.0.0)
@@ -223,7 +225,7 @@ GRAPH
     yum-epel (>= 0.0.0)
   windows (1.36.6)
     chef_handler (>= 0.0.0)
-  wordpress-cluster (1.0.0)
+  wordpress-cluster (1.1.0)
     apt (>= 0.0.0)
     capistrano-wordpress (>= 0.0.0)
     consul (>= 0.0.0)

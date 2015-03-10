@@ -15,8 +15,8 @@ wordpress_cluster_lb node['wordpress-cluster1']['keepalived']['state'] do
   keepalived_interface 'eth1'
   keepalived_auth_pass keepalived['password']
   sites [{ name: 'consul', host: 'consul.stg', service: 'consul-ui@vagrant', basic_auth: true },
-         { name: 'bedrock1', host: 'bedrock1.stg', service: 'apache2@vagrant'},
-         { name: 'bedrock2', host: 'bedrock2.stg', service: 'apache2@vagrant'}]
+         { name: 'bedrock1', host: 'bedrock1.stg', service: 'apache2@vagrant', redirects: ['www.bedrock1.stg']},
+         { name: 'bedrock2', host: 'bedrock2.stg', service: 'apache2@vagrant', redirects: ['www.bedrock2.stg']}]
   basic_auth_users [{ username: 'consul', password: 'consul' }]
 end
 
