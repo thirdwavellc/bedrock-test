@@ -15,7 +15,7 @@ cookbook 'csync2', github: 'thirdwavellc/chef-csync2'
 cookbook 'lsyncd', github: 'thirdwavellc/chef-lsyncd'
 cookbook 'haproxy'
 cookbook 'hostsfile'
-cookbook 'percona', github: 'phlipper/chef-percona'
+cookbook 'percona', github: 'phlipper/chef-percona', ref: '0666754756e9494ac2598d82a67fda6cf42aa8bd'
 cookbook 'mysql-cluster', github: 'thirdwavellc/chef-mysql-cluster'
 
 cookbook 'wordpress-cluster1', path: 'cookbooks/wordpress-cluster1'
