@@ -8,6 +8,11 @@
 #
 #
 
+include_recipe 'apt::default'
+
+include_recipe 'wordpress-cluster1::consul'
+
+# Site recipes
 include_recipe 'bedrock1::web'
 include_recipe 'bedrock2::web'
 
@@ -24,3 +29,6 @@ wordpress_cluster_repl_config 'main' do
     '/var/www/bedrock2/shared/web/app/uploads'
   ]
 end
+
+include_recipe 'consul-services::apache2'
+include_recipe 'consul-services::consul-template'

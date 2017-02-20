@@ -3,3 +3,4 @@ source "https://supermarket.getchef.com"
 metadata
 
 cookbook 'bedrock1', path: '../bedrock1'
+cookbook 'bedrock2', path: '../bedrock2'

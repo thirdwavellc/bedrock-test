@@ -4,34 +4,46 @@ DEPENDENCIES
   bedrock2
     path: cookbooks/bedrock2
   capistrano-base
-    git: git://github.com/adamkrone/chef-capistrano-base.git
-    revision: 1d1a04d511ec54ac03aab7392db7a1ad580a0106
+    git: git://github.com/thirdwavellc/chef-capistrano-base.git
+    revision: 0207c00b3f62ad332ca499b7aa04cf5927609b32
+    tag: v1.0.0
   capistrano-wordpress
-    git: git://github.com/adamkrone/chef-capistrano-wordpress.git
-    revision: 4b1bc5cbdbbb2dc99602736232ec53097b6d0ac1
+    git: git://github.com/thirdwavellc/chef-capistrano-wordpress.git
+    revision: c19d2e54fd412d0487bd0b0fc7b943cf9d61791c
+    tag: v1.0.0
   chef-solo-search
     git: git://github.com/edelight/chef-solo-search.git
     revision: 72bd5e3507056e5c931ee0cf7516ce1bfbce6d51
   consul
     git: git://github.com/johnbellone/consul-cookbook.git
-    revision: a0d5a8b56f55d9caef1ddded2fa95bfeffe28a6c
+    revision: 8670b011dd25c23dc514ecf9e8bc8b0433da79f8
+  consul-alerts
+    git: git://github.com/adamkrone/chef-consul-alerts.git
+    revision: 110b4e3d17cd48c99447e04c4df83ba0767af710
   consul-cluster
-    git: git://github.com/adamkrone/chef-consul-cluster.git
-    revision: 6628ea21c0fd97c0bb0cb0e2d8994e417c9e06de
+    git: git://github.com/thirdwavellc/chef-consul-cluster.git
+    revision: ff58ac44da9e2058c019e6da880314fefdada227
   consul-services
-    git: git://github.com/adamkrone/chef-consul-services.git
-    revision: c290d5bc84cf332d6995d9cb7c4b06ea1803b144
+    git: git://github.com/thirdwavellc/chef-consul-services.git
+    revision: 896041da58ad19ddfba9e3f91f6d1bd9c9e9e50e
   consul-template
     git: git://github.com/adamkrone/chef-consul-template.git
-    revision: 4e583920d227ac70fdf8e2ce11d90b6a21dc8bbf
+    revision: 469b5fe141f69ffcd8995f2785729b43d3e421f0
   csync2
-    git: git://github.com/adamkrone/chef-csync2.git
-    revision: 8909ef838735a42136d7967c31a65724f6818ba8
+    git: git://github.com/thirdwavellc/chef-csync2.git
+    revision: 9d9b0a1464c8557c811c1363c588898fe0d6e8de
   haproxy
   hostsfile
   lsyncd
-    git: git://github.com/adamkrone/chef-lsyncd.git
-    revision: 0963a3aa9bde474378d213a7870c881c96561ae5
+    git: git://github.com/thirdwavellc/chef-lsyncd.git
+    revision: 3b80956ed578cf0f35f51350c66a7d5a353ca565
+  mysql-cluster
+    git: git://github.com/thirdwavellc/chef-mysql-cluster.git
+    revision: a8a2d97a37be76a9634b7aec27cbf29b9e71ca7a
+  percona
+    git: git://github.com/phlipper/chef-percona.git
+    revision: 0666754756e9494ac2598d82a67fda6cf42aa8bd
+    ref: 0666754
   ssh-import-id
     git: git://github.com/adamkrone/chef-ssh-import-id.git
     revision: 402b6b1b5aba26f452347ccc90fec4c1530e87db
@@ -39,22 +51,23 @@ DEPENDENCIES
     git: git://github.com/thirdwavellc/chef-unzip.git
     revision: d2e4a55ac0d3a9c9ad49a0ab52105c276863161b
   wordpress-cluster
-    git: git://github.com/adamkrone/chef-wordpress-cluster.git
-    revision: b59ca9390ab0242122ec4b977dcb958797cdb96c
+    git: git://github.com/thirdwavellc/chef-wordpress-cluster.git
+    revision: d90afc31e3455aef44b5ee90d8e269b009039c0a
+    tag: v1.1.0
   wordpress-cluster1
     path: cookbooks/wordpress-cluster1
 
 GRAPH
   7-zip (1.0.2)
     windows (>= 1.2.2)
-  apache2 (3.0.0)
+  apache2 (3.0.1)
     iptables (>= 0.0.0)
     logrotate (>= 0.0.0)
-  apt (2.6.1)
+  apt (2.7.0)
   ark (0.9.0)
     7-zip (>= 0.0.0)
     windows (>= 0.0.0)
-  aws (2.5.0)
+  aws (2.6.5)
   bedrock1 (0.1.0)
     apt (>= 0.0.0)
     chef-solo-search (>= 0.0.0)
@@ -75,8 +88,8 @@ GRAPH
     ssh-import-id (>= 0.0.0)
     unzip (>= 0.0.0)
     wordpress-cluster (>= 0.0.0)
-  build-essential (2.1.3)
-  capistrano-base (0.3.0)
+  build-essential (2.2.2)
+  capistrano-base (1.0.0)
     apache2 (~> 3.0)
     apt (>= 0.0.0)
     database (~> 2.3.1)
@@ -85,7 +98,7 @@ GRAPH
     ssh-hardening (= 1.0.2)
     sudo (>= 0.0.0)
     users (>= 0.0.0)
-  capistrano-wordpress (0.3.0)
+  capistrano-wordpress (1.0.0)
     apache2 (>= 0.0.0)
     apt (>= 0.0.0)
     capistrano-base (>= 0.0.0)
@@ -98,24 +111,26 @@ GRAPH
   chef-provisioning (0.1.2)
     build-essential (>= 0.0.0)
   chef-solo-search (0.5.2)
-  chef-sugar (2.5.0)
+  chef-sugar (3.1.0)
   chef_handler (1.1.6)
   composer (2.0.0)
     php (>= 0.0.0)
     windows (>= 0.0.0)
-  consul (0.7.1)
-    ark (>= 0.0.0)
+  consul (0.9.1)
     chef-provisioning (>= 0.0.0)
     golang (~> 1.4)
+    libarchive (~> 0.4.0)
     runit (>= 0.0.0)
     yum-repoforge (>= 0.0.0)
+  consul-alerts (0.1.0)
   consul-cluster (0.1.0)
     consul (>= 0.0.0)
+    consul-alerts (>= 0.0.0)
     consul-services (>= 0.0.0)
   consul-services (0.2.0)
     consul (>= 0.0.0)
     curl (>= 0.0.0)
-  consul-template (0.6.0)
+  consul-template (0.7.0)
     ark (>= 0.0.0)
     golang (~> 1.4.0)
     runit (>= 0.0.0)
@@ -143,12 +158,17 @@ GRAPH
     cpu (>= 0.2.0)
   hg (0.1.2)
     mercurial (>= 0.0.0)
+  homebrew (1.12.0)
+    build-essential (>= 2.1.2)
   hostsfile (2.4.5)
-  iis (2.1.6)
+  iis (4.1.0)
     windows (>= 1.34.6)
-  iptables (0.14.1)
+  iptables (1.0.0)
   keepalived (1.2.0)
-  logrotate (1.8.0)
+  libarchive (0.4.4)
+    apt (~> 2.5)
+    build-essential (~> 2.0)
+  logrotate (1.9.1)
   lsyncd (0.1.0)
   mercurial (2.0.4)
     build-essential (>= 0.0.0)
@@ -159,13 +179,23 @@ GRAPH
   mysql-chef_gem (0.0.5)
     build-essential (>= 0.0.0)
     mysql (>= 0.0.0)
-  nodejs (2.2.0)
+  mysql-cluster (0.1.0)
+    apt (>= 0.0.0)
+    percona (>= 0.0.0)
+  nodejs (2.4.0)
     apt (>= 0.0.0)
     ark (>= 0.0.0)
     build-essential (>= 0.0.0)
+    homebrew (>= 0.0.0)
     yum-epel (>= 0.0.0)
-  openssl (2.0.2)
+  openssl (4.0.0)
     chef-sugar (>= 0.0.0)
+  percona (0.15.5)
+    apt (>= 1.9.0)
+    build-essential (>= 0.0.0)
+    openssl (>= 0.0.0)
+    yum (~> 3.0)
+    yum-epel (>= 0.0.0)
   php (1.5.0)
     build-essential (>= 0.0.0)
     iis (>= 0.0.0)
@@ -173,14 +203,14 @@ GRAPH
     windows (>= 0.0.0)
     xml (>= 0.0.0)
     yum-epel (>= 0.0.0)
-  postgresql (3.4.14)
+  postgresql (3.4.18)
     apt (>= 1.9.0)
     build-essential (>= 0.0.0)
-    openssl (>= 0.0.0)
+    openssl (~> 4.0.0)
   python (1.4.6)
     build-essential (>= 0.0.0)
     yum-epel (>= 0.0.0)
-  runit (1.5.14)
+  runit (1.5.18)
     build-essential (>= 0.0.0)
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
@@ -189,15 +219,15 @@ GRAPH
     apt (>= 0.0.0)
   sudo (2.7.1)
   unzip (0.0.1)
-  users (1.7.0)
-  varnish (1.0.2)
+  users (1.8.2)
+  varnish (2.1.0)
     apt (~> 2.4)
     build-essential (>= 0.0.0)
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
-  windows (1.36.1)
+  windows (1.36.6)
     chef_handler (>= 0.0.0)
-  wordpress-cluster (0.1.0)
+  wordpress-cluster (1.1.0)
     apt (>= 0.0.0)
     capistrano-wordpress (>= 0.0.0)
     consul (>= 0.0.0)
@@ -217,17 +247,19 @@ GRAPH
     yum (>= 0.0.0)
   wordpress-cluster1 (0.1.0)
     bedrock1 (>= 0.0.0)
+    bedrock2 (>= 0.0.0)
     csync2 (>= 0.0.0)
     lsyncd (>= 0.0.0)
+    mysql-cluster (>= 0.0.0)
   wp-cli (0.1.4)
   xfs (1.1.0)
-  xml (1.2.9)
+  xml (1.2.13)
     build-essential (>= 0.0.0)
     chef-sugar (>= 0.0.0)
-  yum (3.5.2)
+  yum (3.5.3)
   yum-epel (0.6.0)
     yum (~> 3.0)
-  yum-mysql-community (0.1.12)
+  yum-mysql-community (0.1.16)
     yum (>= 3.0)
   yum-repoforge (0.5.0)
     yum (~> 3.0)

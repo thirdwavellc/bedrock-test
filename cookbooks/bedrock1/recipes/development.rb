@@ -14,8 +14,7 @@ wordpress_cluster_app 'bedrock1' do
   development true
 end
 
-wordpress_cluster_db 'development' do
-  app_name 'bedrock1'
+wordpress_cluster_database 'bedrock1_development' do
   user 'bedrock1'
   user_password 'bedrock1'
   mysql_root_password node['mysql']['server_root_password']
