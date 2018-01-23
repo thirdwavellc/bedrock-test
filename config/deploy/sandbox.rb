@@ -1,4 +1,4 @@
 set :deploy_to, '/var/www/bedrock-test'
 
-server '10.120.19.40', user: 'deploy', roles: %w{web app}
-server '10.120.19.41', user: 'deploy', roles: %w{web app}
+server 'web01.sndbx.thirdwave.local', user: 'deploy', roles: %w{web app}
+server 'web02.sndbx.thirdwave.local', user: 'deploy', roles: %w{web app}
