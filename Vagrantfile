@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.omnibus.chef_version = :latest
 
   config.vm.define 'dev' do |dev|
-    dev.vm.hostname = 'bedrock1.dev'
+    dev.vm.hostname = 'bedrock1.test'
     dev.vm.network 'private_network', ip: '172.20.10.9'
     dev.vm.synced_folder './', '/var/www/bedrock1/current'
 

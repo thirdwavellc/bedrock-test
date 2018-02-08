@@ -10,7 +10,7 @@
 wordpress_cluster_app 'bedrock2' do
   deployment_user 'vagrant'
   deployment_group 'vagrant'
-  server_name 'bedrock2.dev'
+  server_name 'bedrock2.test'
   development true
 end
 

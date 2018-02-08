@@ -101,7 +101,7 @@ To test the development environment, copy the '.env.example' file to a new file
 	vagrant up dev
 
 When this completes, it should be accessible at
-[bedrock.dev](http://bedrock.dev)
+[bedrock.test](http://bedrock.test)
 
 #### Staging
 
