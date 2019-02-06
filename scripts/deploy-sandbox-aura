@@ -1,0 +1,4 @@
+#!/bin/bash
+
+source scripts/setup
+bundle exec cap sandbox-aura deploy
