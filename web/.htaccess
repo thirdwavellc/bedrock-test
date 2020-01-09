@@ -10,3 +10,8 @@ RewriteRule . /index.php [L]
 </IfModule>
 
 # END WordPress
+
+# BEGIN Security Headers
+Header set Referrer-Policy: no-referrer-when-downgrade
+Header set Content-Security-Policy "default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com"
+# END Security Headers
